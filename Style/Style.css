@@ -1,0 +1,51 @@
+  :root{
+    /* Paleta de colores */
+    --withe: #F5F4F3;
+    --black: #4A4A4A;
+    --accent: #FB3B1D;
+    --background: #ffffff;
+
+    /* Tipografias */
+    --font-primary: 'Plus Jakarta Sans', sans-serif;
+    --font-secondary: 'Doto', serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: var(--font-primary);
+   
+}
+
+.nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 1.5rem;
+    padding: 1rem 4rem;
+
+    background-color: var(--withe);
+    border-radius: 1rem;
+}
+
+.nav-list{
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-list a{
+    color: var(--black);
+    transition: color .3s ease-in-out;
+}
+
+.nav-list a:hover{
+    color: var(--accent);
+    
+
+}
+
