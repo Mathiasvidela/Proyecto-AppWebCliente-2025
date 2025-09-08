@@ -4,10 +4,6 @@
     --black: #4A4A4A;
     --accent: #FB3B1D;
     --background: #ffffff;
-
-    /* Tipografias */
-    --font-primary: 'Plus Jakarta Sans', sans-serif;
-    --font-secondary: 'Doto', serif;
 }
 
 /* CSS GLOBAL STYLES */
@@ -18,9 +14,14 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
-    font-family: var(--font-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1;
+    font-weight:300;
     color: var(--black);
    
+}
+body{
+    background-color: #F0F0F0;
 }
 
 .margin{
@@ -54,14 +55,14 @@
     padding: .8rem 4rem;
     border: 2px solid var(--black);
     border-radius: .5rem;
-    background-color: none;
     color: var(--black);
-    font-weight: 600;
+    font-weight: 500;
+    font-size: medium;
     cursor: pointer;
-    transition: background-color 1s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 .btn-stroke:hover{
-    transform: scale(1.02);
+background-color:rgb(222, 222, 222) ;
 }
 
 /* -------------------------------------------------------------- */
@@ -94,6 +95,7 @@
     color: var(--accent); 
 }
 
+/* ----------------------------HERO---------------------------------- */
 
 .hero{
     position: relative;
@@ -114,7 +116,7 @@
 }
 
 .hero-img{
-    width: 50rem;
+    width: 40rem;
     height: auto;
     position: absolute;
     bottom: 0;
@@ -129,17 +131,17 @@
 
 @media (max-width: 850px) {
 
-    .nav-list{
-       display: none;
-
-    
+    .hero-img{
+        display: none;
     }
 
-    .hero{
-        flex-direction: column;
-        text-align: center;
+    .nav-list{
+       display: none;
+    }
+
+     .hero{
         height: 80vh;
-        gap: 2rem;
+        justify-content: center;
         padding: 2rem;
     }
 
@@ -158,21 +160,50 @@
 
 @media (max-width: 426px){
 
-    .hero{
-        height: 80vh;
-        justify-content: center;
-        padding: 2rem;
-    }
 
     .hero-text h1{
         font-size: 2.5rem;
     }
 
-    .hero-img{
-        display: none;
-    }
+    
+}
+ 
+/* ----------------------------Index productos home---------------------------------- */
+.index h2{
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
+.card{
+    display: flex;
+    width: 100%;
+    background-color: #FEFDFE;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 1rem;
+    padding: 1rem 0;
+}
+
+.card button{
+    width: 90%;
+}
+
+.card-img{
+    width: 100%;
+    height: auto;
+}
+.gray{
+    background-color: #E1E2E2;
+}
+
+.index-products{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1rem;
+    justify-items: space-between;
+}
 
 
 
