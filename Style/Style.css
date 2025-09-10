@@ -21,7 +21,7 @@
 }
 
 body{
-    background-color: #F0F0F0;
+    background-color: rgb(224, 224, 224);
     color: var(--black);
 }
 
@@ -37,12 +37,16 @@ body{
     font-size:medium;
 }
 
+.text-xl{
+    font-size: 3rem;
+}
+
 .text-center{
     text-align: center;
 }
 
-.text-xl{
-    font-size: 3rem;
+.text-accent{
+    color: var(--accent);
 }
 
 
@@ -94,7 +98,11 @@ background-color:rgb(222, 222, 222) ;
     padding: 1rem 4rem;
     background-color: var(--background);
     border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.522);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.045);
+
 }
 
 .nav-list{
@@ -169,7 +177,7 @@ background-color:rgb(222, 222, 222) ;
     height: auto;
 }
 .gray{
-    background-color: #E1E2E2;
+    background-color: #6f6f6f;
 }
 
 .index-products{
@@ -186,13 +194,16 @@ background-color:rgb(222, 222, 222) ;
     background-image: radial-gradient(#dbdbdb 1.85px, #ffffff 1.85px);
     background-size: 37px 37px;
     border-radius: 1rem;
+    animation: fondoInfinito 5s linear infinite;
 }
+
+.blur{
+    animation: blurIn 1.2s ease-out forwards;
+}
+
 .claim h2{
     transition: all 2s ease-in;
-}
-.claim h2:hover{
-    transform: scale(1.1);
-    cursor:crosshair;
+    animation: zoomInOut 10s ease-in-out infinite;
 }
 
 /* ----------------------------Main---------------------------------- */
@@ -231,6 +242,7 @@ background-color:rgb(222, 222, 222) ;
 
 .card-product i{
     font-size: 7rem;
+    animation: pulse 5s ease-in-out infinite;
 }
 
 .grid-products{
@@ -419,7 +431,7 @@ background-color:rgb(222, 222, 222) ;
 
     /*----- claim -----*/
      .claim h2{
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
     .claim{
         padding: 10rem 2rem;
@@ -454,3 +466,29 @@ background-color:rgb(222, 222, 222) ;
     }
 }
 
+/* ----------------------------Animaciones---------------------------------- */
+@keyframes zoomInOut {
+  0%,100%{ transform: scale(1); }
+  50%    { transform: scale(1.06); }
+}
+
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes fondoInfinito {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0px 37px; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.05); opacity: 0.8; }
+}
