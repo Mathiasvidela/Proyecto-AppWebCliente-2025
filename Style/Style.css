@@ -1,7 +1,7 @@
   :root{
     /* Paleta de colores */
     --white: #F5F4F3;
-    --black: #2e2e2e;
+    --black: #202020;
     --accent: #FB3B1D;
     --background: #ffffff;
 }
@@ -38,6 +38,10 @@ body{
 }
 
 .text-xl{
+    font-size: 3rem;
+}
+
+.titles{
     font-size: 3rem;
 }
 
@@ -125,8 +129,10 @@ background-color:rgb(222, 222, 222) ;
 .hero{
     position: relative;
     border-radius:1rem ;
-    background: #F6F5F4;
-    background: linear-gradient(180deg, rgba(246, 245, 244, 1) 0%, rgba(204, 204, 204, 1) 100%);
+   
+    background-image: url(/images/background-hero.jpg);
+    background-size: cover;
+  
     height: 80vh;
     display: flex;
     align-items: center;
@@ -173,12 +179,14 @@ background-color:rgb(222, 222, 222) ;
 }
 
 .card-img{
+    max-height: 25rem;
     width: 100%;
-    height: auto;
+    object-fit:contain;
+    aspect-ratio: 1/1;
+    display: block;
+    margin: 0 auto;
 }
-.gray{
-    background-color: #6f6f6f;
-}
+
 
 .index-products{
     display: grid;
@@ -189,7 +197,11 @@ background-color:rgb(222, 222, 222) ;
 
 /* ----------------------------claim---------------------------------- */
 .claim{
-    padding: 15rem 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    min-height: 100vh;
     background-color: #ffffff;
     background-image: radial-gradient(#dbdbdb 1.85px, #ffffff 1.85px);
     background-size: 37px 37px;
@@ -223,7 +235,7 @@ background-color:rgb(222, 222, 222) ;
     gap: 2rem;
     justify-content: space-around;
     align-items: center;
-    background: linear-gradient(180deg,rgba(255, 255, 255, 1) 0%, rgba(232, 232, 232, 1) 100%);
+    background-color: var(--background);
     font-size: 1.5rem;
     text-align: center;
 }
@@ -258,7 +270,6 @@ background-color:rgb(222, 222, 222) ;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
-
 
 .product{
     display: flex;
@@ -387,18 +398,24 @@ background-color:rgb(222, 222, 222) ;
 
 
     /*----- claim -----*/
+
     .claim h2{
         font-size: 2.5rem;
     }
 
     /*----- main -----*/
-    .phone-img{
-        display: none;
-    }
+    
     .product{
         flex-direction: column;
         text-align: center;
         padding: 2rem;
+    }
+
+    .title-product{
+        font-size: 2rem;
+    }
+    .info-product{
+        width: 100%;
     }
 
     /*----- footer -----*/
@@ -414,6 +431,9 @@ background-color:rgb(222, 222, 222) ;
 
 
 @media (max-width:550px ){
+    .titles{
+        font-size: 2rem;
+    }
 
     /*----- hero -----*/
     .hero-text h1{
@@ -431,10 +451,11 @@ background-color:rgb(222, 222, 222) ;
 
     /*----- claim -----*/
      .claim h2{
-        font-size: 1.2rem;
+        font-size: 2rem;
     }
     .claim{
         padding: 10rem 2rem;
+        height: 80vh;
     }
 
 
@@ -445,6 +466,10 @@ background-color:rgb(222, 222, 222) ;
 
     .grid-products{
         grid-template-columns: 1fr;
+    }
+
+    .background-product{
+         transform: rotate(180deg);
     }
 
 
