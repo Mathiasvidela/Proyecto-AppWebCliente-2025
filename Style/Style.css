@@ -1,7 +1,7 @@
   :root{
     /* Paleta de colores */
     --white: #F5F4F3;
-    --black: #202020;
+    --black: #0f0f0f;
     --accent: #FB3B1D;
     --background: #ffffff;
 }
@@ -26,7 +26,7 @@ body{
 }
 
 .margin{
-    margin: 1.5rem;
+    margin: 2rem 10rem;
 }
 
 .font-bold{
@@ -80,10 +80,12 @@ body{
     font-weight: 500;
     font-size: medium;
     cursor: pointer;
-    transition: all .5s ease-in-out;
+    transition: all .2s ease-in-out ;
 }
 .btn-stroke:hover{
-background-color:rgb(222, 222, 222) ;
+    background-color:var(--black);
+    color: var(--background);
+    transform: translateY(3px);
 }
 
 /* ----------------------------Nav Bar---------------------------------- */
@@ -172,6 +174,7 @@ background-color:rgb(222, 222, 222) ;
     gap: 1rem;
     border-radius: 1rem;
     padding: 1rem 0;
+    overflow: hidden;
 }
 
 .card button{
@@ -185,13 +188,18 @@ background-color:rgb(222, 222, 222) ;
     aspect-ratio: 1/1;
     display: block;
     margin: 0 auto;
+    transition: all .9s ease-in-out;
+}
+
+.card-img:hover{
+    transform: scale(1.08)
 }
 
 
 .index-products{
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    gap: 1rem;
+    gap: 2rem;
     justify-items: space-between;
 }
 
@@ -208,6 +216,10 @@ background-color:rgb(222, 222, 222) ;
     border-radius: 1rem;
     animation: fondoInfinito 5s linear infinite;
 }
+
+
+  
+
 
 .blur{
     animation: blurIn 1.2s ease-out forwards;
@@ -240,7 +252,7 @@ background-color:rgb(222, 222, 222) ;
     text-align: center;
 }
 .card-product:hover{
-    background: linear-gradient(180deg, #FB3B1D, #f98714);
+    background: linear-gradient(180deg, #FB3B1D, #f96814);
     color: var(--white);
     cursor: pointer;
     transform: scale(1.05);
@@ -248,8 +260,8 @@ background-color:rgb(222, 222, 222) ;
 }
 
 .card-product:hover .icon-gradient {
-  background: none;                 /* quita el gradiente */  
-  -webkit-text-fill-color: var(--white);   
+    background: none;          
+    -webkit-text-fill-color: var(--white);   
 }
 
 .card-product i{
@@ -265,7 +277,7 @@ background-color:rgb(222, 222, 222) ;
 }
 
 .icon-gradient{
-    background: linear-gradient(180deg, #FB3B1D, #f98714);
+    background: linear-gradient(180deg, #FB3B1D, #f96814);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -307,7 +319,7 @@ background-color:rgb(222, 222, 222) ;
 /* ----------------------------Footer---------------------------------- */
 
 .footer{
-    padding: 2rem 4rem;
+    padding: 8rem 4rem;
     background-color: var(--black);
     color: var(--white);
     border-radius: 1rem;
@@ -332,9 +344,6 @@ background-color:rgb(222, 222, 222) ;
 }
 
 
-@media (max-width: 800px){
-   
-}
 
 /* ----------------------------Media Queries---------------------------------- */
 
@@ -510,7 +519,7 @@ background-color:rgb(222, 222, 222) ;
 
 @keyframes fondoInfinito {
   0%   { background-position: 0 0; }
-  100% { background-position: 0px 37px; }
+  100% { background-position: 80px 80px; }
 }
 
 @keyframes pulse {
