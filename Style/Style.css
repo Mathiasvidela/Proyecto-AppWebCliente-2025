@@ -265,7 +265,7 @@ body{
 }
 
 .card-product i{
-    font-size: 7rem;
+    font-size: 6rem;
     animation: pulse 5s ease-in-out infinite;
 }
 
@@ -348,6 +348,9 @@ body{
 /* ----------------------------Media Queries---------------------------------- */
 
 @media (max-width:1151px ){
+    .margin{
+        margin: 2rem 5rem;
+    }
     
     /*----- hero -----*/
 
@@ -356,9 +359,11 @@ body{
     }
 
     /*----- main -----*/
-    .grid-products{
-        grid-template-columns: repeat(2,1fr);
+
+    .card-product i{
+    font-size: 4rem;
     }
+    
     .card-product{
         padding: 1rem;
     }
@@ -370,6 +375,9 @@ body{
 }
 
 @media (max-width: 850px) {
+    .margin{
+        margin: 2rem 3rem;
+    }
 
     /*----- hero -----*/
     .hero-img{
@@ -413,6 +421,9 @@ body{
     }
 
     /*----- main -----*/
+    .grid-products{
+        grid-template-columns: repeat(2,1fr);
+    }
     
     .product{
         flex-direction: column;
@@ -442,6 +453,10 @@ body{
 @media (max-width:550px ){
     .titles{
         font-size: 2rem;
+    }
+
+     .margin{
+        margin: 2rem 1rem;
     }
 
     /*----- hero -----*/
