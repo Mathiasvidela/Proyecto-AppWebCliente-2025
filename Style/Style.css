@@ -1,7 +1,7 @@
   :root{
     /* Paleta de colores */
     --white: #F5F4F3;
-    --black: #0f0f0f;
+    --black: #0B1519;
     --accent: #FB3B1D;
     --background: #ffffff;
 }
@@ -43,6 +43,10 @@ body{
 
 .titles{
     font-size: 3rem;
+}
+
+.text-white{
+    color: var(--white);
 }
 
 .text-center{
@@ -251,6 +255,7 @@ body{
     font-size: 1.5rem;
     text-align: center;
 }
+
 .card-product:hover{
     background: linear-gradient(180deg, #FB3B1D, #f96814);
     color: var(--white);
@@ -268,6 +273,38 @@ body{
     font-size: 6rem;
     animation: pulse 5s ease-in-out infinite;
 }
+
+.card-product2{
+    height: 20rem;
+    display: flex;
+    padding: 3rem;
+    gap: 2rem;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--black);
+    color: var(--white);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.card-product2:hover{
+    background: linear-gradient(180deg, #FB3B1D, #f96814);
+    color: var(--white);
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-product2:hover .icon-gradient {
+    background: none;          
+    -webkit-text-fill-color: var(--white);   
+}
+
+.card-product2 i{
+    font-size: 6rem;
+    animation: pulse 5s ease-in-out infinite;
+}
+
 
 .grid-products{
     display: grid;
@@ -310,11 +347,41 @@ body{
     background-size: cover;
     background-position: center;
     border-radius: 1rem;
+    min-height: 70vh;
+}
+
+.background-product2{
+    background-image: url(/images/fondoProductos2.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 1rem;
+        min-height: 70vh;
 }
 .phone-img{
+    width: 18rem;
+    height: auto;
+    filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.212));
+}
+
+.watch-img{
     width: 20rem;
     height: auto;
+    filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.212));
 }
+
+.inear-img{
+    width: 25rem;
+    height: auto;
+    filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.212));
+}
+
+.headphones-img{
+    width: 25rem;
+    height: auto;
+    filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.212));
+}
+
+
 
 /* ----------------------------Footer---------------------------------- */
 
@@ -371,7 +438,18 @@ body{
     .phone-img{
         width: 10rem;
     }
-    
+
+    .watch-img{
+        width: 15rem;
+    }
+
+    .inear-img{
+        width: 15rem;
+    }
+
+    .headphones-img{
+        width: 15rem;
+    }
 }
 
 @media (max-width: 850px) {
@@ -492,17 +570,13 @@ body{
         grid-template-columns: 1fr;
     }
 
-    .background-product{
-         transform: rotate(180deg);
-    }
-
-
     .card-product{
         padding: 1rem;
         height: 10rem;
         flex-direction: row;
         text-align: left;
     }
+
     .card-product i{
     font-size: 4rem;
     }
