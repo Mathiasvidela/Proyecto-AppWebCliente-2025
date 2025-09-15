@@ -594,7 +594,7 @@ margin: 1rem 0;
 
 
 
-@media (max-width:550px ){
+@media (max-width:600px ){
     .titles{
         font-size: 2rem;
     }
