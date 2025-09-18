@@ -22,9 +22,9 @@
 <body>
 <header class="sticky">
       <nav class="nav-header margin">
-        <a href="./index.html"><img src="/images/ZenPhone.svg" alt="Logo" class="logo" /></a>
+        <a href="../index.html"><img src="/images/ZenPhone.svg" alt="Logo" class="logo" /></a>
           <div class="nav-list">
-          <a href="/index.html">Home</a>
+          <a href="../index.html">Home</a>
           <a href="#">Phone</a>
           <a href="#">Watch</a>
           <a href="#">InEar</a>
@@ -93,7 +93,7 @@
             </div>
         </div>
 
-        <form action="#">
+        <form action="#" onsubmit="capturar(event)">
 
             <div class="formulario">
 
@@ -118,7 +118,15 @@
     
         </form>
 
-
+        <div class="modal hidden" id="modal">
+            <div class="modal-msj" id="modalContent">
+                <i class="fa-solid fa-circle-check"></i>
+                <h3>¡Su mensaje fue enviado <span class="font-bold">correctamente!</span></h3>
+                <div id="modalText"></div>
+                <button onclick="cerrarModal()" class="btn-fill">Cerrar</button>
+            </div>
+        </div>
+      
 
 
 
@@ -129,6 +137,7 @@
 
 
 
+    <script src="../main.js"></script>
     
 </body>
 </html>

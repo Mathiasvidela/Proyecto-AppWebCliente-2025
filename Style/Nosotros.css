@@ -125,6 +125,78 @@
 }
 
 
+.modal{
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset:0;
+    background: rgba(0, 0, 0, 0.459);
+}
+.modal-msj{
+    background:#fff;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: stretch;
+    padding: 2rem;
+    height: 20rem;
+    width: 30rem;
+    border-radius: 1rem;
+}
+
+.modal-msj i{
+    font-size: 4rem;
+    color: rgb(1, 179, 1);
+    margin-bottom: 1rem;
+    animation: zoomInOut 1s ease-in-out infinite;
+}
+
+.modal-msj h3{
+    font-size: 2rem;
+    margin-bottom: 1rem
+}
+
+.modal-msj button{
+    margin-top: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+.flex {
+    display: flex;
+}
+
+@media (max-width: 1151px ){
+
+    .nosotros{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .formulario-section{
+       grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 850px ){
+    .nosotros{
+        grid-template-columns: 1fr;
+    }
+
+    .formulario-section{
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px ){
+    
+
+}
+
+
 
 
 
