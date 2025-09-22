@@ -17,6 +17,7 @@
     font-family: 'Space Grotesk', sans-serif;
     line-height: 1;
     font-weight:300;
+    scroll-behavior: smooth;
 }
 
 body{
@@ -88,6 +89,10 @@ p {
 
 
 .btn-fill{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
     font-size: medium;
     padding: 1rem 3rem;
     border: none;
@@ -105,8 +110,40 @@ p {
     transform: scale(1.03);
 }
 
+.btn-fill-black{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    font-size: medium;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: .5rem;
+    background-color: rgb(39, 39, 39);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+}
+
+.btn-fill-black:hover{
+    background-color: var(--white);
+    color: var(--black);
+    transform: scale(1.03);
+}
+
+.btn-fill-black:focus{
+    background-color: var(--white);
+    color: var(--black);
+}
+
 .btn-stroke{
-    padding: .8rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding: 1rem 3rem;
     border: 2px solid var(--black);
     border-radius: .5rem;
     color: var(--black);
@@ -476,6 +513,45 @@ margin: 1rem 0;
 .icon-4{
     bottom:20%;
     right:18%;
+}
+
+/* ----------------------------Ventajas---------------------------------- */
+
+.ventajas {
+    background-color: var(--background);
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.ventaja-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+}
+
+.ventaja-item p{
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.icono {
+    background-color: var(--accent); 
+    color: var(--background);              
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 4rem;
+    min-height: 4rem;
 }
 
 /* ----------------------------Footer---------------------------------- */
