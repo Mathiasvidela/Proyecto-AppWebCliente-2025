@@ -114,7 +114,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     font-size: medium;
     padding: 1rem 3rem;
     border: none;

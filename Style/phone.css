@@ -16,7 +16,7 @@
 }
 
 .producto{
-    width: 25rem;
+    width: 20rem;
 }
 
 .precio{
@@ -53,8 +53,9 @@
     border: 2px solid var(--accent);
 }
 
-.caracteristicas{
- margin-bottom: 1rem;
+
+.hiddenInfo{
+        display: none;
 }
 
 .caracteristicas-item{
@@ -115,6 +116,7 @@
 
     .producto{
         width: 15rem;
+        padding: 1rem 0;
     }
 
 }

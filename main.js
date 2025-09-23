@@ -32,5 +32,17 @@ function cerrarModal(){
     
 }
 
+let caracteristicas = document.querySelectorAll(".caracteristicas");
+let botonCerrar = document.querySelectorAll(".cerrarBoton")
 
+function mostrarCaract(){
+    caracteristicas.forEach(c => c.classList.remove("hiddenInfo"));
+    botonCerrar.forEach(b => b.classList.remove("hiddenInfo"));
+
+}
+
+function cerrarInfo(){
+    caracteristicas.forEach(c => c.classList.add("hiddenInfo"));
+    botonCerrar.forEach(b => b.classList.add("hiddenInfo"));
+}
 
