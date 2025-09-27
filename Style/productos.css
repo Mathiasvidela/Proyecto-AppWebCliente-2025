@@ -62,7 +62,7 @@
     text-align: center;
     border-radius: .5rem;
     border: 1px solid rgb(197, 197, 197);
-    background-color: var(--white);
+    background-color: var(--background);
 }
 
 .cantidad:focus{
@@ -115,8 +115,6 @@
     display: flex;
     gap: 1rem;
 }
-
-
 
 /*--------------------- CTA ---------------------*/
 
