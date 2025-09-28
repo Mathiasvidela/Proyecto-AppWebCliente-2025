@@ -20,15 +20,23 @@
   <body>
     <header class="sticky">
       <nav class="nav-header margin">
-        <a href="./index.html"><img src="/images/ZenPhone.svg" alt="Logo" class="logo" /></a>
-          <div class="nav-list">
-          <a href="/index.html">Home</a>
-          <a href="/pages/productoPhone.html">Phone</a>
-          <a href="/pages/productoWatch.html">Watch</a>
-          <a href="/pages/productoHeadphone.html">Headphone</a>
-          <a href="./pages/nosotros.html">Nosotros</a>
-          </div>
-        <a href="/pages/cart.html"><img src="/images/cart.svg" alt="carrito compras"></a>
+        <div class="logo-btn">
+           <button class="menu-btn" id="menuBtn" ><i class="fa-solid fa-bars"></i></button>
+          <a href="./index.html"><img src="/images/ZenPhone.svg" alt="Logo" class="logo" /></a>
+        </div>
+         
+
+            <div class="nav-list" id="navList">
+              <a href="/index.html">Home</a>
+              <a href="/pages/productoPhone.html">Phone</a>
+              <a href="/pages/productoWatch.html">Watch</a>
+              <a href="/pages/productoHeadphone.html">Headphone</a>
+              <a href="./pages/nosotros.html">Nosotros</a>
+            </div>
+
+          
+
+          <a href="/pages/cart.html" class="cart-icon"><img src="/images/cart.svg" alt="carrito compras"></a>
       </nav>
     </header>
 
@@ -38,8 +46,7 @@
         <div class="hero-text">
           <h1>Balance <br> Meets <br><span class="font-bold">Innovation</span></h1>
           <a class="btn-fill" href="#productos-zhen">Conoce mas <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        
+        </div>   
 
       </div>
 
@@ -542,6 +549,8 @@
 
       </div>
     </footer>
+
+    <script src="/navBar.js"></script>
 
   </body>
 </html>
