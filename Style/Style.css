@@ -390,7 +390,7 @@ p {
     flex: 1 1 240px; 
     flex-direction: column;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
     padding: 1rem;
 }
 
