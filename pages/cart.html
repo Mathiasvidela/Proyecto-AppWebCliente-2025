@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="./Style/Style.css" />
+    <link rel="stylesheet" href="./Style/productos.css" />
+    <link rel="stylesheet" href="./Style/cart.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!--Tipografias usadas-->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/favico.svg" type="image/x-icon">
+
+    <title>ZhenPhone</title>
+</head>
+
+<body>
+    <header class="sticky">
+      <nav class="nav-header margin">
+        <div class="logo-btn">
+           <button class="menu-btn" id="menuBtn" ><i class="fa-solid fa-bars"></i></button>
+          <a href="../index.html"><img src="./images/ZenPhone.svg" alt="Logo" class="logo" /></a>
+        </div>
+         
+
+            <div class="nav-list" id="navList">
+              <a href="../index.html">Home</a>
+              <a href="./pages/productoPhone.html">Phone</a>
+              <a href="./pages/productoWatch.html">Watch</a>
+              <a href="./pages/productoHeadphone.html">Headphone</a>
+              <a href="./pages/nosotros.html">Nosotros</a>
+            </div>
+
+          
+
+          <a href="./pages/cart.html" class="cart-icon"><img src="./images/cart.svg" alt="carrito compras"></a>
+      </nav>
+    </header>
+
+
+   <main>
+    <div class="margin">
+      <h2>Carrito de <span class="font-bold text-accent">compras</span></h2>
+    </div>
+    
+    <section class="cart margin">
+
+        <div class="cart-product">
+
+            <div class="cart-img">
+                <img src="./images/ZhenHeadphones Elite.png" alt="">
+            </div>
+
+            <div class="cart-description">
+                <h4>ZhenHeadphones Elite</h4>
+                <p>#001579896665418</p>
+                <p>128GB</p>
+            </div>
+
+            <div class="cart-price">
+                <h4>$650</h4>
+            </div>
+
+            <div class="contador">
+                <label for="cantidad">Cantidad</label>
+                <button class="contadores">-</button>
+                <input class="cantidad" type="number" name="cantidad" value="1" min="1" step="1">
+                <button class="contadores">+</button>
+            </div>
+
+        </div>
+
+        <div class="cart-pedido">
+
+            <h4>Tu Pedido (<span>1</span>)</h4>
+            <hr>
+
+            <div class="flex-pedido">
+                <p>SubTotal</p>
+                <p>$650</p>
+            </div>
+
+            <div class="flex-pedido">
+                <p>Envio</p>
+                <p>Gratis</p>
+            </div>
+
+            <div class=" flex-pedido">
+                <p>IVA</p>
+                <p>21%</p>
+            </div>
+
+            <div class="flex-pedido">
+                <h4>Total</h4>
+                <h4>$<span>786,5</span></h4>
+            </div>
+
+            <button class="btn-fill">Comprar</button>
+        
+        </div>
+
+        <div class="flex-pedido cupon">
+            <p>¿Tienes un cupon de descuento?</p>
+            <button class="btn-mas">+</button>
+        </div>
+
+       
+    </section>
+
+
+
+
+
+
+
+
+
+   </main>
+
+    <footer>
+      <div class="footer margin">
+
+        <div class="footer-info">
+          <h3>ZenPhone</h3>
+          <p>© 2025 Todos los derechos reservados.</p>
+        </div>
+
+        <div class="footer-nav">
+          <a href="../index.html">Home</a>
+          <a href="./pages/productoPhone.html">Phone</a>
+          <a href="./pages/productoWatch.html">Watch</a>
+          <a href="./pages/productoHeadphone.html">Headphone</a>
+          <a href="./pages/nosotros.html">Nosotros</a>
+        </div>
+
+      </div>
+    </footer>
+
+    <script src="./navBar.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>

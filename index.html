@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="./Style/Style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!--Tipografias usadas-->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/favico.svg" type="image/x-icon">
+
+    <title>ZhenPhone</title>
+  </head>
+  <body>
+    <header class="sticky">
+      <nav class="nav-header margin">
+        <div class="logo-btn">
+           <button class="menu-btn" id="menuBtn" ><i class="fa-solid fa-bars"></i></button>
+          <a href="./index.html"><img src="/images/ZenPhone.svg" alt="Logo" class="logo" /></a>
+        </div>
+         
+
+            <div class="nav-list" id="navList">
+              <a href="./index.html">Home</a>
+              <a href="./pages/productoPhone.html">Phone</a>
+              <a href="./pages/productoWatch.html">Watch</a>
+              <a href="./pages/productoHeadphone.html">Headphone</a>
+              <a href="./pages/nosotros.html">Nosotros</a>
+            </div>
+
+          
+
+          <a href="./pages/cart.html" class="cart-icon"><img src="./images/cart.svg" alt="carrito compras"></a>
+      </nav>
+    </header>
+
+    <section>
+
+      <div class="hero margin background-hero">
+        <div class="hero-text">
+          <h1>Balance <br> Meets <br><span class="font-bold">Innovation</span></h1>
+          <a class="btn-fill" href="#productos-zhen">Conoce mas <i class="fa-solid fa-arrow-right"></i></a>
+        </div>   
+
+      </div>
+
+    </section>
+
+    <section class="index">
+      <h2>Conoce <span class="font-bold">ZenPhone</span></h2>
+
+      <div class="index-products margin">
+
+        <div class="card">
+          <img class="card-img" src="./images/phone_home.jpg" alt="Celular">
+          <a class="btn-stroke" href="./pages/productoPhone.html">Ver mas</a>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="./images/watch_home.jpg" alt="watch">
+          <a class="btn-stroke" href="./pages/productoWatch.html">Ver mas</a>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="./images/Headphone_home.jpg" alt="Headphones">
+          <a class="btn-stroke" href="./pages/productoHeadphone.html">Ver mas</a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="margin">
+      <div class="blur">
+        <div class="claim">
+          <h2 class="text-center text-xl">Diseño minimal,<br> potencia equilibrada y <br><span class="font-bold">una experiencia zen</span></h2>
+        </div>
+      </div>
+    </section>
+
+
+    <main id="productos-zhen">
+
+
+
+       <section class="all-products margin">
+
+        <div class="buscador">
+          <h2>Nuestros productos</h2>
+
+          <div>
+            <input type="text" placeholder="¿Que estas buscando?">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+
+        </div>
+
+        <aside class="aside">
+
+          <div class="filtros">
+
+            <div>
+              <h3>Producto</h3>
+              <button>Celulares</button>
+              <button>Smart Watch</button>
+              <button>Auriculares In Ear</button>
+              <button>Headphones</button>
+            </div>
+          
+          
+          <div>
+            <h3>Memoria Interna</h3>
+            <button>Menos de 3GB</button>
+            <button>4GB a 7 GB</button>
+            <button>8GB o mas</button>
+          </div>
+
+          <div>
+            <h3>Memoria RAM</h3>
+            <button>Desde 40% OFF</button>
+            <button>Desde 20% OFF</button>
+            <button>Desde 15% OFF</button>
+          </div>
+          
+          <div>
+            <h3>Filtrar por precio</h3>
+            <button>Mayor precio</button>
+            <button>Menor Precio</button>
+          </div>
+          
+          <div>
+            <h3>Precio Desde</h3>
+            <input type="range" name="precio" id="precio" min="850" max="1500">
+          </div>
+          
+        </div>
+          
+          
+
+        </aside>
+
+        <div class="view-products" id="productsContainer">
+
+         <!-----------  Celulares--------------->
+
+          <article class="products-card">
+            <div>
+              <img class="products-card-img" src="./images/phone xpro.png" alt="">
+            </div>
+
+            <div class="products-card-title">
+              <h3 >Zhen phone X pro</h3>
+              <p>Potencia máxima y diseño exclusivo para los que buscan lo mejor.</p>
+            </div>
+
+            <div class="products-card-footer">
+              <p class="products-card-precio">$156</p>
+              <a href="./pages/detalleProducto.html" class="btn-fill">Comprar <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+          </article>
+          
+          
+          <article class="products-card">
+            <div>
+              <img class="products-card-img" src="./images/zhenphonex.png" alt="">
+            </div>
+
+            <div class="products-card-title">
+              <h3 >Zhen phone X</h3>
+              <p>Equilibrio perfecto entre rendimiento y estilo.</p>
+            </div>
+
+            <div class="products-card-footer">
+              <p class="products-card-precio">$156</p>
+              <a href="./pages/detalleProducto.html" class="btn-fill">Comprar <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+          </article>
+          
+          
+          <article class="products-card">
+            <div>
+              <img class="products-card-img" src="./images/zhenphoneSE.png" alt="">
+            </div>
+
+            <div class="products-card-title">
+              <h3 >Zhen phone SE</h3>
+              <p>Tecnología esencial con todas las funciones que necesitas.</p>
+            </div>
+
+            <div class="products-card-footer">
+              <p class="products-card-precio">$156</p>
+              <a href="./pages/detalleProducto.html" class="btn-fill">Comprar <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+          </article>
+          
+          
+          <article class="products-card">
+            <div>
+              <img class="products-card-img" src="./images/zhenphone Y.png" alt="">
+            </div>
+
+            <div class="products-card-title">
+              <h3 >Zhen phone Y</h3>
+              <p>Tu smartphone confiable y accesible para el día a día.</p>
+            </div>
+
+            <div class="products-card-footer">
+              <p class="products-card-precio">$156</p>
+              <a href="./pages/detalleProducto.html" class="btn-fill">Comprar <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+          </article>
+          
+          
+        <!-----------  Headphones--------------->
+
+          <article class="products-card">
+            <div>
+              <img class="products-card-img" src="./images/ZhenHeadphones Pro Max.png" alt="">
+            </div>
+
+            <div class="products-card-title">
+              <h3 >ZhenHeadphones Pro Max</h3>
+              <p>Sonido potente y premium.</p>
+            </div>
+
+            <div class="products-card-footer">
+              <p class="products-card-precio">$156</p>
+              <a href="./pages/detalleProducto.html" class="btn-fill">Comprar <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+          </article>
+          
+          
+          
+          <article class="products-card">
+            <div>
+              <img class="products-card-img" src="./images/ZhenHeadphones Elite.png" alt="">
+            </div>
+
+            <div class="products-card-title">
+              <h3 >ZhenHeadphones Elite</h3>
+              <p>Calidad y comodidad superior.</p>
+            </div>
+
+            <div class="products-card-footer">
+              <p class="products-card-precio">$156</p>
+              <a href="./pages/detalleProducto.html" class="btn-fill">Comprar <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+          </article>
+          
+          
+          
+          <article class="products-card">
+            <div>
+              <img class="products-card-img" src="./images/ZhenHeadphones Studio.png" alt="">
+            </div>
+
+            <div class="products-card-title">
+              <h3 >ZhenHeadphones Studio</h3>
+              <p>Audio claro y profesional.</p>
+            </div>
+
+            <div class="products-card-footer">
+              <p class="products-card-precio">$156</p>
+              <a href="./pages/detalleProducto.html" class="btn-fill">Comprar <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+          </article>
+          
+          
+          
+          <article class="products-card">
+            <div>
+              <img class="products-card-img" src="./images/ZhenHeadphones Play.png" alt="">
+            </div>
+
+            <div class="products-card-title">
+              <h3 >ZhenHeadphones Play</h3>
+              <p>Diversión con gran sonido.</p>
+            </div>
+
+            <div class="products-card-footer">
+              <p class="products-card-precio">$156</p>
+              <a href="./pages/detalleProducto.html" class="btn-fill">Comprar <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+          </article>
+          
+          
+          <article class="products-card">
+            <div>
+              <img class="products-card-img" src="./images/ZhenHeadphones Go.png" alt="">
+            </div>
+
+            <div class="products-card-title">
+              <h3 >ZhenHeadphones Go</h3>
+              <p>Ligeros y prácticos siempre.</p>
+            </div>
+
+            <div class="products-card-footer">
+              <p class="products-card-precio">$156</p>
+              <a href="./pages/detalleProducto.html" class="btn-fill">Comprar <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+          </article>
+
+          <!------------------ Watch  -------------------->
+
+          <article class="products-card">
+            <div>
+              <img class="products-card-img" src="./images/zhen watch pro.png" alt="">
+            </div>
+
+            <div class="products-card-title">
+              <h3 >Zhen Watch Pro</h3>
+              <p>Ligeros y prácticos siempre.</p>
+            </div>
+
+            <div class="products-card-footer">
+              <p class="products-card-precio">$156</p>
+              <a href="./pages/detalleProducto.html" class="btn-fill">Comprar <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+          </article>
+      
+
+
+        </div>
+
+      </section>
+
+      <section>
+
+        <!----- celular -->
+        <div>
+          <div>
+            <h3 class="titles text-center">Conoce la familia <span class="font-bold">zhen phone</span></h3>
+          </div>
+
+          <div class="grid-products margin">
+
+            <div class="card card-product">
+              <h4>Rendimiento <br><span class="font-bold">equilibrado</span></h4>
+              <i class="fa-solid fa-microchip icon-gradient"></i>
+              <p class="font-medium hidden">Potencia justa para tu día a día</p>
+            </div>
+
+            <div class="card card-product">
+              <h4>Transparencia <br><span class="font-bold">inteligente</span></h4>
+              <i class="fa-solid fa-eye icon-gradient"></i>
+              <p class="font-medium hidden">Claridad en cada detalle</p>
+            </div>
+
+            <div class="card card-product">
+              <h4>Diseño <br><span class="font-bold">minimalista</span></h4>
+              <i class="fa-solid fa-mobile-screen icon-gradient"></i>
+              <P class="font-medium hidden">Belleza en lo esencial</P>
+            </div>
+
+            <div class="card card-product">
+              <h4>Conectividad <br><span class="font-bold">total</span></h4>
+              <i class="fa-solid icon-gradient fa-wifi"></i>
+              <p class="font-medium hidden">Conexión sin límites</p>
+            </div> 
+
+          </div>
+
+          <div class="margin ">
+            <div class="background-product product">
+              <div class="info-product">
+                <h2 class="title-product">ZhenPhone X</h2>
+                <p>Un smartphone que combina velocidad, estilo y simplicidad en tus manos.</p>
+                <a href="./pages/productoPhone.html" class="btn-fill">Conoce los modelos <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+              <img src="./images/phone.png" alt="Foto celular" class="phone-img">
+            </div>
+          </div>
+        </div>
+
+
+
+        <!----- reloj -->
+        <div>
+          <div>
+            <h3 class="titles text-center">Conoce la familia <span class="font-bold">zhen Watch</span></h3>
+          </div>
+
+          <div class="grid-products margin">
+
+            <div class="card card-product2">
+              <h4>Salud<br><span class="font-bold">activa</span></h4>
+              <i class="fa-solid fa-heart-pulse icon-gradient"></i>
+              <p class="font-medium hidden">Cuida tu bienestar en cada momento</p>
+            </div>
+
+            <div class="card card-product2">
+              <h4>Notificaciones al<br><span class="font-bold">instante</span></h4>
+              <i class="fa-solid fa-bell icon-gradient"></i>
+              <p class="font-medium hidden">Siempre conectado sin usar tu teléfono</p>
+            </div>
+
+            <div class="card card-product2">
+              <h4>Estilo<br><span class="font-bold">versátil</span></h4>
+              <i class="fa-solid fa-clock icon-gradient"></i>
+              <P class="font-medium hidden">Elegante que combina con todo</P>
+            </div>
+
+            <div class="card card-product2">
+              <h4>Autonomía<br><span class="font-bold">prolongada</span></h4>
+              <i class="fa-solid fa-battery-full icon-gradient"></i>
+              <p class="font-medium hidden">Energía que dura día y noche</p>
+            </div> 
+
+          </div>
+
+          <div class="margin ">
+            <div class="background-product2 product">
+              <div class="info-product text-white">
+                <h2 class="title-product">Zhen Watch Pro</h2>
+                <p>Un reloj inteligente que une salud, conectividad y diseño versátil en tu muñeca.</p>
+                <a href="./pages/productoWatch.html" class="btn-fill">Conoce los modelos <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+              <img src="./images/zhen watch pro.png" alt="Foto celular" class="watch-img">
+            </div>
+          </div>
+        </div>
+       
+        <!----- Headphones -->
+        <div>
+          <div>
+            <h3 class="titles text-center">Conoce la familia <span class="font-bold">zhen overEar</span></h3>
+          </div>
+
+          <div class="grid-products margin">
+
+            <div class="card card-product">
+              <h4>Cancelación<br><span class="font-bold">activa</span></h4>
+              <i class="fa-solid fa-ear-deaf icon-gradient"></i>
+              <p class="font-medium hidden">Aíslate del ruido y concéntrate en tu sonido</p>
+            </div>
+
+            <div class="card card-product">
+              <h4>Autonomía<br><span class="font-bold">extensa</span></h4>
+              <i class="fa-solid fa-battery-full icon-gradient"></i>
+              <p class="font-medium hidden">Disfruta de horas de música sin interrupciones</p>
+            </div>
+
+            <div class="card card-product">
+              <h4>Comodidad<br><span class="font-bold">total</span></h4>
+              <i class="fa-solid fa-headphones icon-gradient"></i>
+              <P class="font-medium hidden">Diseño ergonómico para largas sesiones</P>
+            </div>
+
+            <div class="card card-product">
+              <h4>Sonido<br><span class="font-bold">Hi-Fi</span></h4>
+              <i class="fa-solid fa-music icon-gradient"></i>
+              <p class="font-medium hidden">Emparejamiento rápido y sin interrupciones</p>
+            </div> 
+
+          </div>
+
+          
+          <div class="margin ">
+            <div class="background-product product">
+              <div class="info-product">
+                <h2 class="title-product">Zhen overEar X</h2>
+                <p>Un auricular que combina potencia, comodidad y un sonido que te envuelve.</p>
+                <a href="./pages/productoHeadphone.html" class="btn-fill">Conoce los modelos <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+              <img src="./images/ZhenHeadphones Pro Max.png" alt="Foto celular" class="headphones-img">
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    
+    
+    <section class="margin">
+      <div class="blur">
+        <div class="claim">
+          <h2 class="text-center">Tecnología que se integra<br>con tu estilo de vida.<br><span class="font-bold text-accent">Menos ruido, más esencia.</span></h2>
+          <i class="fa-solid fa-circle icon icon-1"></i>
+          <i class="fa-solid fa-battery-half icon icon-2"></i>
+          <i class="fa-solid fa-wifi icon icon-3"></i>
+          <i class="fa-solid fa-infinity icon icon-4"></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="ventajas margin">
+      <div class="ventaja-item">
+        <div class="icono">
+          <i class="fa-solid fa-truck-fast"></i>
+        </div>
+        <p>Envío<br><span class="font-bold">gratis</span></p>
+      </div>
+
+      <div class="ventaja-item">
+        <div class="icono">
+          <i class="fa-solid fa-wallet"></i>
+        </div>
+        <p>Pago<br><span class="font-bold">seguro</span></p>
+      </div>
+
+      <div class="ventaja-item">
+        <div class="icono">
+          <i class="fa-solid fa-headset"></i>
+        </div>
+        <p>Soporte<br><span class="font-bold">24/7</span></p>
+      </div>
+
+      <div class="ventaja-item">
+        <div class="icono">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <p>Garantía<br><span class="font-bold">24 meses</span></p>
+      </div>
+    </section>
+
+     <section class="margin">
+        <div class="parent">
+        <div class="img1"></div>
+        <div class="img2"></div>
+        <div class="img3"></div>
+        <div class="img4"></div>
+        <div class="img5"></div>
+        </div>
+      </section>
+   
+
+    <footer>
+      <div class="footer margin">
+
+        <div class="footer-info">
+          <h3>ZenPhone</h3>
+          <p>© 2025 Todos los derechos reservados.</p>
+        </div>
+
+        <div class="footer-nav">
+          <a href="./index.html">Home</a>
+          <a href="./pages/productoPhone.html">Phone</a>
+          <a href="./pages/productoWatch.html">Watch</a>
+          <a href="./pages/productoHeadphone.html">Headphone</a>
+          <a href="./pages/nosotros.html">Nosotros</a>
+        </div>
+
+      </div>
+    </footer>
+
+    <script src="./navBar.js"></script>
+
+  </body>
+</html>

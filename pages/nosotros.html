@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="./Style/Style.css" />
+    <link rel="stylesheet" href="./Style/Nosotros.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!--Tipografias usadas-->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/images/favico.svg" type="image/x-icon">
+
+    <title>ZhenPhone</title>
+</head>
+<body>
+<header class="sticky">
+      <nav class="nav-header margin">
+        <div class="logo-btn">
+           <button class="menu-btn" id="menuBtn" ><i class="fa-solid fa-bars"></i></button>
+          <a href="../index.html"><img src="./images/ZenPhone.svg" alt="Logo" class="logo" /></a>
+        </div>
+         
+
+            <div class="nav-list" id="navList">
+              <a href="../index.html">Home</a>
+              <a href="/pages/productoPhone.html">Phone</a>
+              <a href="/pages/productoWatch.html">Watch</a>
+              <a href="/pages/productoHeadphone.html">Headphone</a>
+              <a href="./pages/nosotros.html">Nosotros</a>
+            </div>
+
+          
+
+          <a href="./pages/cart.html" class="cart-icon"><img src="./images/cart.svg" alt="carrito compras"></a>
+      </nav>
+    </header>
+
+    <section>
+
+      <div class="hero hero-nosotros margin background-hero">
+        <div class="hero-text">
+          <h1>Tecnologías<br><span class="font-bold">diseñadas para durar</span></h1>
+          <p class="text-medium">Conoce nuestra historia, valores y compromiso con la innovación tecnológica</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <main>
+        <div class="nosotros margin">
+            <div class="nosotros-text">
+                <h2 class="h2">Nuestra historia</h2>
+                <p class="p">En ZhenPhone nacimos con una idea clara: crear tecnología que simplifique la vida, sin distracciones ni excesos. Desde nuestros primeros prototipos, apostamos por el diseño limpio, los materiales responsables y una experiencia de uso intuitiva.
+                    A lo largo de los años hemos crecido junto a una comunidad que comparte nuestra visión: dispositivos que no solo son potentes, sino también humanos y cercanos. Cada producto refleja nuestro compromiso con la innovación, la transparencia y la esencia de lo importante.
+                    Hoy seguimos construyendo el futuro con la misma filosofía: menos ruido, más esencia.</p>
+                
+                
+            </div>
+            <img src="./images/imgNosotros.png" alt="Imagen Nosotros" class="img-nosotros">
+        </div>
+
+        <div class="valores margin">
+
+            <div class="valores-card">
+                <i class="fas fa-flag"></i>
+                <h3>Nuestra Mision</h3>
+                <p>Transformar la manera en que las empresas interactúan con la tecnología, 
+                    proporcionando soluciones innovadoras que impulsen el crecimiento y la 
+                    eficiencia.</p>
+            </div>
+
+            <div class="valores-card">
+                 <i class="fas fa-bullseye"></i>
+                 <h3>Nuestra Visión</h3>
+                <p>Ser líderes en el mercado de tecnología, reconocidos por nuestra capacidad de innovación y nuestro compromiso con la satisfacción del cliente.</p>
+            </div>
+        </div>
+
+        
+    </main>
+
+    <section class="formulario-section margin">
+
+        <div class="formulario-info">
+           <h2>Contáctanos</h2>
+           <p><span class="font-bold">¿Tienes alguna pregunta o comentario?</span> Nos encantaría saber de ti. 
+            Completa el formulario a continuación y nos pondremos en contacto contigo lo antes posible.</p>
+
+            <div class="form-contact">
+                <i class="fa-solid fa-envelope icon-form"></i>
+                <div>
+                    <p class="font-bold">Email</p>
+                    <p>info@zhenphone.com.ar</p>
+                </div>
+            </div>
+
+            <div class="form-contact">
+                <i class="fa-solid fa-phone icon-form"></i>
+                <div>
+                    <p class="font-bold">Telefono</p>
+                    <p>0800-777-555</p>
+                </div>
+            </div>
+        </div>
+
+        <form action="#" onsubmit="capturar(event)">
+
+            <div class="formulario">
+
+                
+                    <label for="name">Nombre:</label>
+                    <input class="input" type="text" id="name" name="name" required placeholder="Tu Nombre">
+                
+
+                
+                    <label for="email">Correo Electrónico:</label>
+                    <input class="input" type="email" id="email" name="email" required placeholder="Tu@email.com">
+                
+
+                
+                    <label for="message">Mensaje:</label>
+                    <textarea class="input-text" id="message" name="message" rows="4" required placeholder="Tu Mensaje"></textarea>
+
+                    <label><input type="checkbox" required/> Acepto la política de privacidad</label>
+                
+
+                <button type="submit" class="btn-submit btn-fill"><i class="fa-solid fa-paper-plane"></i> Enviar</button>
+
+            </div>
+    
+        </form>
+
+        <div class="modal hidden" id="modal">
+            <div class="modal-msj" id="modalContent">
+                <i class="fa-solid fa-circle-check"></i>
+                <h3>¡Su mensaje fue enviado <span class="font-bold">correctamente!</span></h3>
+                <div id="modalText"></div>
+                <button onclick="cerrarModal()" class="btn-fill">Cerrar</button>
+            </div>
+        </div>
+      
+
+
+
+
+
+    </section>
+
+    <footer>
+      <div class="footer margin">
+
+        <div class="footer-info">
+          <h3>ZenPhone</h3>
+          <p>© 2025 Todos los derechos reservados.</p>
+        </div>
+
+        <div class="footer-nav">
+          <a href="../index.html">Home</a>
+          <a href="./pages/productoPhone.html">Phone</a>
+          <a href="./pages/productoWatch.html">Watch</a>
+          <a href="./pages/productoHeadphone.html">Headphone</a>
+          <a href="/pages/nosotros.html">Nosotros</a>
+        </div>
+
+      </div>
+    </footer>
+
+
+
+    <script src="/navBar.js"></script>
+    <script src="../main.js"></script>
+    
+</body>
+</html>

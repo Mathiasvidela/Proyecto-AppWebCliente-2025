@@ -1,0 +1,191 @@
+.grid-detalles-producto{
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 1rem;
+}
+
+.img-producto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 1rem;
+}
+
+.producto{
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    width: 15rem;
+    padding: 2rem 0;
+    width: 20rem;
+}
+
+.precio{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 2rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: 1rem;
+}
+
+.precio h2{
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+.precio h3{
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+.contador{
+    margin:1rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+}
+
+.cantidad{
+    padding: .8rem;
+    width: 4rem;
+    text-align: center;
+    border-radius: .5rem;
+    border: 1px solid rgb(197, 197, 197);
+}
+
+.contadores{
+    padding: .8rem;
+    width: 4rem;
+    text-align: center;
+    border-radius: .5rem;
+    border: 1px solid rgb(197, 197, 197);
+    background-color: var(--background);
+}
+
+.cantidad:focus{
+    outline: none;
+    border: 2px solid var(--accent);
+}
+
+
+.hiddenInfo{
+        display: none;
+}
+
+.caracteristicas-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.caracteristicas-item i{
+    color: rgb(13, 160, 13);
+    font-size: 1.5rem;
+}
+
+
+.storage {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.storage-btn {
+  padding: 1rem 2rem;
+  border: 1px solid gray;
+  border-radius: 6px;
+  background: var(--white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.storage-btn:focus{
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+}
+
+
+.buttons{
+    display: flex;
+    gap: 1rem;
+}
+
+/*--------------------- CTA ---------------------*/
+
+.cta{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #FB3B1D;
+    background-image: radial-gradient(#ff735e 1.6px, #FB3B1D 1.6px);
+    background-size: 32px 32px;
+    padding: 2rem;
+    border-radius: 1rem;
+    color: var(--white);
+
+}
+
+.cta-info h4{
+    font-size: 3rem;
+    font-weight:700 ;
+}
+
+.cta-img{
+    width: 25rem;
+}
+
+
+@media (max-width:1151px ){
+
+    .producto{
+        width: 15rem;
+        padding: 1rem 0;
+    }
+
+}
+
+@media (max-width: 850px) {
+
+
+    .grid-detalles-producto{
+       display: flex;
+       flex-direction: column;
+    }
+
+    .precio h2{
+        font-size: 2rem;
+    }
+
+    .cta h4{
+        font-size: 3rem;
+    }
+
+    .cta-img{
+        width: 10rem;
+    }
+
+    
+}
+
+@media (max-width:600px ){
+    .buttons{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .cta h4{
+        font-size: 2rem;
+    }
+     .cta-img{
+        display: none;
+    }
+
+}
