@@ -71,6 +71,12 @@ p {
   margin: 0.5rem 0;
 }
 
+.filter-active{
+    color: var(--accent);
+    font-weight: 600;
+    font-size: large;
+}
+
 .titles{
     font-size: 3rem;
 }
