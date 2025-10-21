@@ -37,6 +37,9 @@ function cerrarModal(){
 
 
 //Productos
+
+//PRUEBA CON PRODUCTOS DEL JSON DUMMY
+
 const ListProducts = [
 
   // ======== Phones ========
@@ -60,6 +63,8 @@ const ListProducts = [
   {name: "Zhen Watch Core", description: "Simple y versátil.", price: 850, img: "./images/zhen watch core.png", category: "smart watch", ram: "4GB", storage: "32GB"}
  
 ];
+
+
 
 //Dom Elements
 let productsContainer = document.querySelector("#productsContainer"); //este es el div donde van todos los productos
@@ -310,4 +315,31 @@ priceFilter.forEach(button => {
 
 
 //inicializa la página con todos los productos del array
-renderProducts(ListProducts);
+//renderProducts(ListProducts);
+
+
+async function fetchProducts() {
+    try {
+
+        const response = await fetch('https://dummyjson.com/products');
+        const data = await response.json();
+
+        // Mapear los productos al formato que ya esta creado
+        const mapProducts = data.products.map(product => ({
+            name: product.title,
+            description: product.description,
+            price: product.price,
+            img: product.images[0],
+            category: product.category,
+            ram: product.ram || null,
+            storage: product.storage || null
+        }));
+
+        renderProducts(mapProducts);
+
+    } catch (error) {
+        console.error('Error fetching products:', error);
+    }
+}
+
+fetchProducts();
