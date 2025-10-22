@@ -36,10 +36,12 @@ function cerrarModal(){
 }
 
 
-//Productos
+//----------------------------------------- Productos -------------------------------------------
+
+
 
 //PRUEBA CON PRODUCTOS DEL JSON DUMMY
-
+/*
 const ListProducts = [
 
   // ======== Phones ========
@@ -63,7 +65,7 @@ const ListProducts = [
   {name: "Zhen Watch Core", description: "Simple y versátil.", price: 850, img: "./images/zhen watch core.png", category: "smart watch", ram: "4GB", storage: "32GB"}
  
 ];
-
+*/
 
 
 //Dom Elements
@@ -141,24 +143,24 @@ function renderProducts(products) {
 
 
 function filterProducts(text) {
-    let filtered = ListProducts.filter(product => product.name.toLowerCase().includes(text.toLowerCase()));
+    let filtered = listProducts.filter(product => product.name.toLowerCase().includes(text.toLowerCase()));
     return filtered;
 }
 
 //----------------------------------------funciones de busqueda por filtros
 
 function filterByCategory(category) {
-    let filtered = ListProducts.filter(product => product.category === category);
+    let filtered = listProducts.filter(product => product.category === category);
     return filtered;
 }
 
 function filterByStorage(storage) {
-    let filtered = ListProducts.filter(product => product.storage == storage);
+    let filtered = listProducts.filter(product => product.storage == storage);
     return filtered;
 }
 
 function filterByRam(ram) {
-    let filtered = ListProducts.filter(product => product.ram == ram);
+    let filtered = listProducts.filter(product => product.ram == ram);
     return filtered;
 }
 
@@ -171,7 +173,7 @@ function changeFilter(buttons, button, filteredList) {
   if (button.classList.contains("filter-active")) { //si contiene la clase se elimina
 
     button.classList.remove("filter-active");
-    renderProducts(ListProducts); //renderiza todos los productos
+    renderProducts(listProducts); //renderiza todos los productos
     
   } else{
 
@@ -184,8 +186,6 @@ function changeFilter(buttons, button, filteredList) {
   }
   
 }
-
-
 
 
 //Eventos
@@ -289,11 +289,11 @@ priceFilter.forEach(button => {
 
         if (button.id === "price-high") { //si el id del boton es price-high ordena de mayor a menor
 
-            sorted = [...ListProducts].sort((a, b) => b.price - a.price);
+            sorted = [...listProducts].sort((a, b) => b.price - a.price);
 
         } else{
 
-            sorted = [...ListProducts].sort((a, b) => a.price - b.price); //si no de menor a mayor
+            sorted = [...listProducts].sort((a, b) => a.price - b.price); //si no de menor a mayor
 
         }
 
@@ -317,7 +317,7 @@ priceFilter.forEach(button => {
 //inicializa la página con todos los productos del array
 //renderProducts(ListProducts);
 
-
+/*
 async function fetchProducts() {
     try {
 
@@ -343,3 +343,98 @@ async function fetchProducts() {
 }
 
 fetchProducts();
+
+*/
+
+
+
+//API Airtable
+const airTableToken = "pataUae8ipD8y0NgF.95fd129f6bbaf7f974f06334e64f0279ca176d24378c688fd0dd0001dddf1e10";
+const baseId = "appPpctPfxobwT5AN";
+const tableName = "Products";
+const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
+
+async function fetchProductsFromAirtable() {
+
+    try {
+        const response = await fetch(airTableUrl, {
+
+            headers: {
+                'Authorization': `Bearer ${airTableToken}`,
+                'Content-Type': 'application/json'
+            }
+
+        });
+
+        const data = await response.json();
+        console.log(data);
+
+        const mapProducts = data.records.map(product => ({
+            name: product.fields.Name,
+            description: product.fields.Description,
+            price: product.fields.price,
+            img: product.fields.img,
+            category: product.fields.Category,
+            ram: product.fields.Ram,
+            storage: product.fields.Storage
+        }));
+        listProducts = mapProducts;
+        renderProducts(mapProducts);
+
+
+    }
+
+    catch (error) {
+        console.error('Error fetching products:', error);
+    }
+
+};
+
+//inicilizacion de la pagina con productos de Airtable
+fetchProductsFromAirtable();
+
+
+
+
+
+//Editar un producto en Airtable
+
+async function editProductInAirtable(productId) {
+    try{
+
+        const response = await fetch(`${airTableUrl}/${productId}`, {
+            method: 'PATCH',
+            headers: {
+                'Authorization': `Bearer ${airTableToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                fields: {
+                    Name: product.name,
+                    Description: product.description,
+                    Price: product.price,
+                    Category: product.category,
+                    Ram: product.ram,
+                    Storage: product.storage
+                }
+            })
+        });
+        const data = await response.json();
+        console.log(data);
+
+    } catch (error) {
+        console.error('Error editing product:', error);
+    }
+}
+
+// ej como editar con la funcion para usar en una page
+/*
+editProductInAirtable(){
+    name: "Zhen phone X pro",
+    description: "Máxima potencia y diseño.",
+    price: 156,
+    category: "celulares",
+    ram: "8GB",
+    storage: "256GB"
+}
+    */
