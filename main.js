@@ -36,36 +36,67 @@ function cerrarModal(){
 }
 
 
-//----------------------------------------- Productos -------------------------------------------
+
+
+//----------------------------------------------------------------------- productos home -------------------------------------------
 
 
 
-//PRUEBA CON PRODUCTOS DEL JSON DUMMY
-/*
-const ListProducts = [
+let listProducts = []; //array vacio para llenar con los productos de Airtable
 
-  // ======== Phones ========
-  {name: "Zhen phone X pro", description: "Máxima potencia y diseño.", price: 156, img: "./images/phone xpro.png", category: "celulares", ram: "8GB", storage: "256GB"},
-  {name: "Zhen phone X", description: "Rendimiento y estilo.", price: 156, img: "./images/zhenphonex.png", category: "celulares", ram: "12GB", storage: "128GB"},
-  {name: "Zhen phone SE", description: "Tecnología esencial.", price: 156, img: "./images/zhenphoneSE.png", category: "celulares", ram: "4GB", storage: "64GB"},
-  {name: "Zhen phone Y", description: "Confiable y accesible.", price: 156, img: "./images/zhenphone Y.png", category: "celulares", ram: "4GB", storage: "64GB"},
+//API Airtable
+const airTableToken = "pataUae8ipD8y0NgF.95fd129f6bbaf7f974f06334e64f0279ca176d24378c688fd0dd0001dddf1e10";
+const baseId = "appPpctPfxobwT5AN";
+const tableName = "Products";
+const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
 
-  // ======== Headphones ========
-  {name: "ZhenHeadphones Pro Max", description: "Sonido premium.", price: 156, img: "./images/ZhenHeadphones Pro Max.png", category: "headphones", ram: null, storage: null},
-  {name: "ZhenHeadphones Elite", description: "Comodidad superior.", price: 156, img: "./images/ZhenHeadphones Elite.png", category: "headphones", ram: null, storage: null},
-  {name: "ZhenHeadphones Studio", description: "Audio profesional.", price: 156, img: "./images/ZhenHeadphones Studio.png", category: "headphones", ram: null, storage: null},
-  {name: "ZhenHeadphones Play", description: "Diversión sonora.", price: 156, img: "./images/ZhenHeadphones Play.png", category: "headphones", ram: null, storage: null},
-  {name: "ZhenHeadphones Go", description: "Ligeros y prácticos.", price: 156, img: "./images/ZhenHeadphones Go.png", category: "headphones", ram: null, storage: null},
+async function fetchProductsFromAirtable() {
 
-  // ======== Smartwatches ========
-  {name: "Zhen Watch Pro", description: "Elegante y potente.", price: 1750, img: "./images/zhen watch pro.png", category: "smart watch", ram: "4GB", storage: "32GB"},
-  {name: "Zhen Watch Active", description: "Deportividad y estilo.", price: 1400, img: "./images/zhen watch active.png", category: "smart watch", ram: "32GB", storage: "16GB"},
-  {name: "Zhen Watch Fit", description: "Cómodo y funcional.", price: 999, img: "./images/zhen watch fit.png", category: "smart watch", ram: "8GB", storage: "8GB"},
-  {name: "Zhen Watch Sport", description: "Ideal para entrenar.", price: 850, img: "./images/zhen watch sport.png", category: "smart watch", ram: "8GB", storage: "8GB"},
-  {name: "Zhen Watch Core", description: "Simple y versátil.", price: 850, img: "./images/zhen watch core.png", category: "smart watch", ram: "4GB", storage: "32GB"}
- 
-];
-*/
+    try {
+        const response = await fetch(airTableUrl, {
+
+            headers: {
+                'Authorization': `Bearer ${airTableToken}`,
+                'Content-Type': 'application/json'
+            }
+
+        });
+
+        const data = await response.json();
+        console.log(data);
+
+        const mapProducts = data.records.map(product => ({
+            name: product.fields.name,
+            description: product.fields.description,
+            price: product.fields.price,
+            img: product.fields.img,
+            category: product.fields.category,
+            ram: product.fields.ram,
+            storage: product.fields.storage
+        }));
+       
+
+        listProducts = mapProducts;
+
+        console.log('Campos de Airtable:', Object.keys(data.records[0].fields)); // para ver el nombre exacto del campo
+        console.log('Distinct categories:', Array.from(new Set(listProducts.map(p => p.category))));
+        console.table(listProducts.map(p => ({ name: p.name, category: p.category, len: (p.category||'').length })));
+
+        renderProducts(mapProducts);
+
+
+    }
+
+    catch (error) {
+        console.error('Error fetching products:', error);
+    }
+
+};
+
+//inicilizacion de la pagina con productos de Airtable
+fetchProductsFromAirtable();
+
+
 
 
 //Dom Elements
@@ -147,10 +178,18 @@ function filterProducts(text) {
     return filtered;
 }
 
+
+
 //----------------------------------------funciones de busqueda por filtros
 
 function filterByCategory(category) {
-    let filtered = listProducts.filter(product => product.category === category);
+
+    console.log("Filtrando categoría:", category);
+
+    let filtered = listProducts.filter(product => product.category == category);
+
+    console.log("Categoría filtrada:", category);
+
     return filtered;
 }
 
@@ -165,7 +204,11 @@ function filterByRam(ram) {
 }
 
 
+
 //------------------------------------------ funcion de destildar filtros
+
+
+
 
 function changeFilter(buttons, button, filteredList) {
   productsContainer.innerHTML = ""; // limpia el contenedor
@@ -203,58 +246,16 @@ searchBar.addEventListener("keyup", (event) => {
     }
 });
 
-/*
-funcion vieja, estoy probnado el change filter() para no repetir codigo
-
-categoryButtons.forEach(button => {
-    button.addEventListener("click", () => {
-
-        //destildar boton
-        if (button.classList.contains("filter-active")) {
-
-            button.classList.remove("filter-active");
-            productsContainer.innerHTML = "";
-            renderProducts(ListProducts);
-            return;
-
-        } else{
-            //destacar boton
-            button.classList.add("filter-active");
-        }
-        
-
-        //toma el valor del boton
-        const category = button.textContent.toLowerCase();
-        
-        //filtra los productos con la funcion
-        const filteredProducts = filterByCategory(category); 
-
-        //Limpia el contenedor
-        productsContainer.innerHTML = ""; 
-
-        //renderiza los productos filtrados
-        renderProducts(filteredProducts);
-
-        //cambiar de boton
-        categoryButtons.forEach(btn => { //elimina la clase de los otros botones usando un for each, si un boton es diferente al que se clickeo le borra la clase
-            if (btn !== button) {
-                btn.classList.remove("filter-active"); 
-            }
-        });
-
-
-    });     
-});
-
-*/
 
 // CATEGORY FILTER
 categoryButtons.forEach(button => {
   button.addEventListener("click", () => {
 
-    const category = button.textContent.trim().toLocaleLowerCase(); //toma el valor del boton
+    const category = button.textContent; //toma el valor del boton
+   
     const filtered = filterByCategory(category); //filtra los productos con la funcion
     changeFilter(categoryButtons, button, filtered); //pasa los 3 parametros a la funcion
+    console.log("Encontrados:", filtered.length);
 
   });
 });
@@ -309,89 +310,6 @@ priceFilter.forEach(button => {
 
 
 
-
-
-
-
-
-//inicializa la página con todos los productos del array
-//renderProducts(ListProducts);
-
-/*
-async function fetchProducts() {
-    try {
-
-        const response = await fetch('https://dummyjson.com/products');
-        const data = await response.json();
-
-        // Mapear los productos al formato que ya esta creado
-        const mapProducts = data.products.map(product => ({
-            name: product.title,
-            description: product.description,
-            price: product.price,
-            img: product.images[0],
-            category: product.category,
-            ram: product.ram || null,
-            storage: product.storage || null
-        }));
-
-        renderProducts(mapProducts);
-
-    } catch (error) {
-        console.error('Error fetching products:', error);
-    }
-}
-
-fetchProducts();
-
-*/
-
-
-
-//API Airtable
-const airTableToken = "pataUae8ipD8y0NgF.95fd129f6bbaf7f974f06334e64f0279ca176d24378c688fd0dd0001dddf1e10";
-const baseId = "appPpctPfxobwT5AN";
-const tableName = "Products";
-const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
-
-async function fetchProductsFromAirtable() {
-
-    try {
-        const response = await fetch(airTableUrl, {
-
-            headers: {
-                'Authorization': `Bearer ${airTableToken}`,
-                'Content-Type': 'application/json'
-            }
-
-        });
-
-        const data = await response.json();
-        console.log(data);
-
-        const mapProducts = data.records.map(product => ({
-            name: product.fields.Name,
-            description: product.fields.Description,
-            price: product.fields.price,
-            img: product.fields.img,
-            category: product.fields.Category,
-            ram: product.fields.Ram,
-            storage: product.fields.Storage
-        }));
-        listProducts = mapProducts;
-        renderProducts(mapProducts);
-
-
-    }
-
-    catch (error) {
-        console.error('Error fetching products:', error);
-    }
-
-};
-
-//inicilizacion de la pagina con productos de Airtable
-fetchProductsFromAirtable();
 
 
 
