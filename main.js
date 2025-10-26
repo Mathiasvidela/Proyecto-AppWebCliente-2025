@@ -45,7 +45,7 @@ function cerrarModal(){
 let listProducts = []; //array vacio para llenar con los productos de Airtable
 
 //API Airtable
-const airTableToken = "pataUae8ipD8y0NgF.95fd129f6bbaf7f974f06334e64f0279ca176d24378c688fd0dd0001dddf1e10";
+
 const baseId = "appPpctPfxobwT5AN";
 const tableName = "Products";
 const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
