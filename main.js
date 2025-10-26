@@ -74,13 +74,7 @@ async function fetchProductsFromAirtable() {
             ram: product.fields.ram,
             storage: product.fields.storage
         }));
-       
-
         listProducts = mapProducts;
-
-        console.log('Campos de Airtable:', Object.keys(data.records[0].fields)); // para ver el nombre exacto del campo
-        console.log('Distinct categories:', Array.from(new Set(listProducts.map(p => p.category))));
-        console.table(listProducts.map(p => ({ name: p.name, category: p.category, len: (p.category||'').length })));
 
         renderProducts(mapProducts);
 
@@ -107,6 +101,7 @@ const categoryButtons = document.querySelectorAll(".category-filter");
 const storageButtons = document.querySelectorAll(".storage-filter");
 const ramButtons = document.querySelectorAll(".ram-filter");
 const priceFilter = document.querySelectorAll(".price-filter");
+const clearFiltersButton = document.querySelector("#clear-filters");
 
 
 
@@ -182,14 +177,103 @@ function filterProducts(text) {
 
 //----------------------------------------funciones de busqueda por filtros
 
+
+//estado inicial de los filtros
+let filterState = {
+    searchBar: "",
+    category: null,
+    storage: null,
+    ram: null,
+    sorting: null
+};
+
+
+
+
+function applyFilters() {
+    
+    //search bar
+
+    let dataFilters = listProducts;
+
+    //filtra barra de busqueda
+    if (filterState.searchBar) {
+        let text = filterState.searchBar;
+        dataFilters = dataFilters.filter(product => product.name.toLowerCase().includes( text.toLowerCase() )  ); 
+    }
+
+    // filtra categoria
+    if (filterState.category) {
+        let category = filterState.category;
+        dataFilters = dataFilters.filter(product => product.category == category);
+    }
+
+    // filtra almacenamiento
+    if (filterState.storage) {
+        let storage = filterState.storage;
+        dataFilters = dataFilters.filter(products => products.storage == storage)
+   }
+
+   // filtra ram
+   if (filterState.ram) {
+        let ram = filterState.ram;
+        dataFilters = dataFilters.filter(products => products.ram == ram)
+   }
+
+   //precio mayor menor o menor mayor
+   if (filterState.sorting == "price-high") {
+        dataFilters = dataFilters.sort((a, b) => b.price - a.price);
+   } else {
+        dataFilters = dataFilters.sort((a, b) => a.price - b.price);
+   }
+
+
+   // si no hay productos que coincidan con los filtros muestra mensaje, sino renderiza los productos filtrados
+   if (dataFilters.length === 0) {
+        productsContainer.innerHTML = "<p>No se encontraron productos que coincidan con los filtros seleccionados.</p>";
+   } else {
+        productsContainer.innerHTML = ""; // limpia el contenedor
+        renderProducts(dataFilters);
+   }
+
+}
+
+// limpia los filtros y vuelve a renderizar todos los productos, funcion con onclick() en el boton
+function clearFilters() {
+
+    filterState = {
+        searchBar: "",
+        category: null,
+        storage: null,
+        ram: null,
+        sorting: null
+    };
+
+    productsContainer.innerHTML = ""; // limpia el contenedor
+    renderProducts(listProducts); //renderiza todos los productos
+
+    //quitar las clases activas de los botones
+    categoryButtons.forEach(button => {
+        button.classList.remove("filter-active");
+    });
+
+    storageButtons.forEach(button => {
+        button.classList.remove("filter-active");
+    });
+
+    ramButtons.forEach(button => {
+        button.classList.remove("filter-active");
+    });
+
+    priceFilter.forEach(button => {
+        button.classList.remove("filter-active");
+    });
+    
+}
+
+
 function filterByCategory(category) {
-
-    console.log("Filtrando categoría:", category);
-
     let filtered = listProducts.filter(product => product.category == category);
-
-    console.log("Categoría filtrada:", category);
-
     return filtered;
 }
 
@@ -236,14 +320,9 @@ function changeFilter(buttons, button, filteredList) {
 //----------------------------------------------- barra de busqueda
 searchBar.addEventListener("keyup", (event) => {
     const searchText = event.target.value;
-    const filteredProducts = filterProducts(searchText);
-    productsContainer.innerHTML = ""; //Limpia el contenedor
-    renderProducts(filteredProducts);
-
-    //mensaje de no se encontraron productos
-    if (filteredProducts.length === 0) {
-        productsContainer.innerHTML = "<p>No se encontraron productos que coincidan con tu búsqueda.</p>";
-    }
+    filterState.searchBar = searchText; //se asigna el valor de la busqueda al estado
+    applyFilters();
+    
 });
 
 
@@ -252,10 +331,13 @@ categoryButtons.forEach(button => {
   button.addEventListener("click", () => {
 
     const category = button.textContent; //toma el valor del boton
-   
     const filtered = filterByCategory(category); //filtra los productos con la funcion
     changeFilter(categoryButtons, button, filtered); //pasa los 3 parametros a la funcion
-    console.log("Encontrados:", filtered.length);
+    filterState.category = category; //asigna en valor del filtro a la variable de estado
+
+    applyFilters();
+    
+
 
   });
 });
@@ -268,6 +350,10 @@ ramButtons.forEach(button => {
         const ram = button.textContent; //toma el valor del boton
         const filteredProducts = filterByRam(ram); //filtra los productos con la funcion
         changeFilter(ramButtons, button, filteredProducts); //pasa los 3 parametros a la funcion
+        filterState.ram = ram; //asigna en valor del filtro a la variable de estado
+
+        applyFilters();
+        
 
     });
 });
@@ -280,6 +366,9 @@ storageButtons.forEach(button => {
         const storage = button.textContent; //toma el valor del boton
         const filteredProducts = filterByStorage(storage); //filtra los productos con la funcion
         changeFilter(storageButtons, button, filteredProducts); //pasa los 3 parametros a la funcion
+        filterState.storage = storage; //asigna en valor del filtro a la variable de estado
+
+        applyFilters();
 
     });
 });
@@ -298,6 +387,9 @@ priceFilter.forEach(button => {
 
         }
 
+        filterState.sorting = button.id;
+        applyFilters();
+        console.log("Estado actual de filtros:", filterState);
         changeFilter(priceFilter, button, sorted);
 
 
