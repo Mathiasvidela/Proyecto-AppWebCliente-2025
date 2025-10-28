@@ -46,6 +46,8 @@ let listProducts = []; //array vacio para llenar con los productos de Airtable
 
 //API Airtable
 
+// PRUEBA COMMIT
+
 const baseId = "appPpctPfxobwT5AN";
 const tableName = "Products";
 const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
