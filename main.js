@@ -1,4 +1,5 @@
 //Formulario
+import { airTableToken,baseId,tableName} from "./envs.js";
 
 
 let form = document.querySelector("form");
@@ -44,13 +45,12 @@ function cerrarModal(){
 
 let listProducts = []; //array vacio para llenar con los productos de Airtable
 
-//API Airtable
-
-// PRUEBA COMMIT
-
-const baseId = "appPpctPfxobwT5AN";
-const tableName = "Products";
 const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
+export const airTableToken = airTableToken;
+export const baseId = baseId;
+export const tableName = tableName;
+
+
 
 async function fetchProductsFromAirtable() {
 
@@ -103,7 +103,7 @@ const categoryButtons = document.querySelectorAll(".category-filter");
 const storageButtons = document.querySelectorAll(".storage-filter");
 const ramButtons = document.querySelectorAll(".ram-filter");
 const priceFilter = document.querySelectorAll(".price-filter");
-const clearFiltersButton = document.querySelector("#clear-filters");
+
 
 
 
@@ -196,7 +196,7 @@ function applyFilters() {
     
     //search bar
 
-    let dataFilters = listProducts;
+    let dataFilters = [...listProducts]; // copia del array original
 
     //filtra barra de busqueda
     if (filterState.searchBar) {
@@ -207,19 +207,19 @@ function applyFilters() {
     // filtra categoria
     if (filterState.category) {
         let category = filterState.category;
-        dataFilters = dataFilters.filter(product => product.category == category);
+        dataFilters = dataFilters.filter(product => product.category === category);
     }
 
     // filtra almacenamiento
     if (filterState.storage) {
         let storage = filterState.storage;
-        dataFilters = dataFilters.filter(products => products.storage == storage)
+        dataFilters = dataFilters.filter(product => product.storage === storage);
    }
 
    // filtra ram
    if (filterState.ram) {
         let ram = filterState.ram;
-        dataFilters = dataFilters.filter(products => products.ram == ram)
+        dataFilters = dataFilters.filter(product => product.ram === ram);
    }
 
    //precio mayor menor o menor mayor
@@ -230,13 +230,17 @@ function applyFilters() {
    }
 
 
-   // si no hay productos que coincidan con los filtros muestra mensaje, sino renderiza los productos filtrados
+
+
+   // si no hay productos que coincidan con los filtros muestra mensaje sino renderiza los productos filtrados
    if (dataFilters.length === 0) {
         productsContainer.innerHTML = "<p>No se encontraron productos que coincidan con los filtros seleccionados.</p>";
    } else {
         productsContainer.innerHTML = ""; // limpia el contenedor
         renderProducts(dataFilters);
    }
+
+
 
 }
 
@@ -273,47 +277,23 @@ function clearFilters() {
     
 }
 
-
-function filterByCategory(category) {
-    let filtered = listProducts.filter(product => product.category == category);
-    return filtered;
-}
-
-function filterByStorage(storage) {
-    let filtered = listProducts.filter(product => product.storage == storage);
-    return filtered;
-}
-
-function filterByRam(ram) {
-    let filtered = listProducts.filter(product => product.ram == ram);
-    return filtered;
-}
-
-
-
 //------------------------------------------ funcion de destildar filtros
 
-
-
-
-function changeFilter(buttons, button, filteredList) {
-  productsContainer.innerHTML = ""; // limpia el contenedor
+function changeFilter(buttons, button) { //esta funcion solo maneja las clases para la UI
 
   if (button.classList.contains("filter-active")) { //si contiene la clase se elimina
 
     button.classList.remove("filter-active");
-    renderProducts(listProducts); //renderiza todos los productos
-    
-  } else{
+  }
 
+  else{
     buttons.forEach(button => {
         button.classList.remove("filter-active");
     });
 
     button.classList.add("filter-active"); //agrega la clase al boton clickeado
-    renderProducts(filteredList); //redenderiza los productos filtrados
   }
-  
+
 }
 
 
@@ -333,13 +313,13 @@ categoryButtons.forEach(button => {
   button.addEventListener("click", () => {
 
     const category = button.textContent; //toma el valor del boton
-    const filtered = filterByCategory(category); //filtra los productos con la funcion
-    changeFilter(categoryButtons, button, filtered); //pasa los 3 parametros a la funcion
-    filterState.category = category; //asigna en valor del filtro a la variable de estado
+
+    const active = button.classList.contains("filter-active");
+    changeFilter(categoryButtons, button); //funcion para manejar las clases de la UI
+
+    filterState.category = active ? null : category; //asigna en valor del filtro a la variable global
 
     applyFilters();
-    
-
 
   });
 });
@@ -350,9 +330,11 @@ ramButtons.forEach(button => {
     button.addEventListener("click", () => {
 
         const ram = button.textContent; //toma el valor del boton
-        const filteredProducts = filterByRam(ram); //filtra los productos con la funcion
-        changeFilter(ramButtons, button, filteredProducts); //pasa los 3 parametros a la funcion
-        filterState.ram = ram; //asigna en valor del filtro a la variable de estado
+
+        const active = button.classList.contains("filter-active");
+        changeFilter(ramButtons, button); // color obotn
+
+        filterState.ram = active ? null : ram; //asigna en valor del filtro a la variable global
 
         applyFilters();
         
@@ -366,33 +348,30 @@ storageButtons.forEach(button => {
     button.addEventListener("click", () => {
 
         const storage = button.textContent; //toma el valor del boton
-        const filteredProducts = filterByStorage(storage); //filtra los productos con la funcion
-        changeFilter(storageButtons, button, filteredProducts); //pasa los 3 parametros a la funcion
-        filterState.storage = storage; //asigna en valor del filtro a la variable de estado
+
+        const active = button.classList.contains("filter-active");
+        changeFilter(storageButtons, button); //color del boton
+
+        filterState.storage = active ? null : storage; //asigna en valor del filtro a la variable global
 
         applyFilters();
 
     });
 });
 
+
+// PRICE FILTER
+
 priceFilter.forEach(button => {
     button.addEventListener("click", () => {
-        let sorted;
 
-        if (button.id === "price-high") { //si el id del boton es price-high ordena de mayor a menor
+        const active = button.classList.contains("filter-active");
 
-            sorted = [...listProducts].sort((a, b) => b.price - a.price);
+        changeFilter(priceFilter, button); //color del boton
 
-        } else{
-
-            sorted = [...listProducts].sort((a, b) => a.price - b.price); //si no de menor a mayor
-
-        }
-
-        filterState.sorting = button.id;
+        filterState.sorting = active ? null : button.id;
+        
         applyFilters();
-        console.log("Estado actual de filtros:", filterState);
-        changeFilter(priceFilter, button, sorted);
 
 
     });
