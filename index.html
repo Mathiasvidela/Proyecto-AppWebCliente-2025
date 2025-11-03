@@ -17,7 +17,10 @@
 
     <title>ZhenPhone</title>
   </head>
+  
   <body>
+ 
+
     <header class="sticky">
       <nav class="nav-header margin">
         <div class="logo-btn">
@@ -103,8 +106,11 @@
         </div>
 
         <aside class="aside">
-
           <div class="filtros">
+
+          
+
+          <div class="botonesFiltros">
 
             <div>
               <h3>Producto</h3>
@@ -114,31 +120,33 @@
             </div>
           
           
-          <div>
-            <h3>Memoria Interna</h3>
-            <button class="storage-filter">8GB</button>
-            <button class="storage-filter">32GB</button>
-            <button class="storage-filter">64GB</button>
-            <button class="storage-filter">128GB</button>
-            <button class="storage-filter">512GB</button>
-            <button class="storage-filter">1TB</button>
+            <div>
+              <h3>Memoria Interna</h3>
+              <button class="storage-filter">8GB</button>
+              <button class="storage-filter">32GB</button>
+              <button class="storage-filter">64GB</button>
+              <button class="storage-filter">128GB</button>
+              <button class="storage-filter">512GB</button>
+              <button class="storage-filter">1TB</button>
+            </div>
+
+            <div>
+              <h3>Memoria RAM</h3>
+              <button class="ram-filter">12GB</button>
+              <button class="ram-filter">8GB</button>
+              <button class="ram-filter">4GB</button>
+            </div>
+          
+            <div>
+              <h3>Filtrar por precio</h3>
+              <button class="price-filter" id="price-high">Mayor precio</button>
+              <button class="price-filter" id="price-low">Menor Precio</button>
+            </div>
+
           </div>
 
           <div>
-            <h3>Memoria RAM</h3>
-            <button class="ram-filter">12GB</button>
-            <button class="ram-filter">8GB</button>
-            <button class="ram-filter">4GB</button>
-          </div>
-          
-          <div>
-            <h3>Filtrar por precio</h3>
-            <button class="price-filter" id="price-high">Mayor precio</button>
-            <button class="price-filter" id="price-low">Menor Precio</button>
-          </div>
-       
-          <div>
-            <button class="btn-fill" id="clear-filters" onclick="clearFilters()">Eliminar filtros</button>
+              <button class="btn-fill" id="clearFilters">Eliminar filtros</button>
           </div>
           
         </div>
@@ -393,7 +401,7 @@
     </footer>
 
     <script src="./navBar.js"></script>
-    <script src="./main.js"></script>
+    <script type="module" src="./main.js"></script>
 
   </body>
 </html>

@@ -46,38 +46,45 @@
         <section class="margin">
             <div class="grid-detalles-producto">
 
-                <div class="img-producto">
-                  <img class="producto" src="/images/ZhenHeadphones Pro Max.png" alt="">
+                <div class="img-producto" id="productImg">
+                  <!--<img class="producto" src="/images/ZhenHeadphones Pro Max.png">-->
                 </div>
 
                 <div class="precio">
 
-                  <h2>ZhenHeadphones Pro Max</h2>
-                 
-                  <h3 class="precio-final">$1.750</h3>
+                  <div id="titleProduct">
+                  <!--<h2>ZhenHeadphones Pro Max</h2>-->
+                  </div>
+                  
+                 <div id="priceProduct">
+                   <!--<h3 class="precio-final">$1.750</h3>-->
+                 </div>
                     
-                    <div class="storage">
-                      <button class="storage-btn">128 GB</button>
-                      <button class="storage-btn">256 GB</button>
-                    </div>
+                 
+                 <div class="storage" id="storageInfo">
+                   <!--<p class="storage-btn">128 GB</p>-->
+                 </div>
 
+                 <div class="storage" id="ramInfo">
+                   <!--<p class="storage-btn">128 GB</p>-->
+                 </div>
             
 
                   <div class="caracteristicas">
 
-                    <div class="caracteristicas-item">
-                       <i class="fa-solid fa-volume-xmark"></i>
-                      <p>Cancelación de ruido activa adaptativa</p>
+                    <div class="caracteristicas-item" id="feature1">
+                       <i class="fa-solid fa-circle-arrow-right"></i>
+                      
                     </div>
 
-                    <div class="caracteristicas-item">
-                      <i class="fa-solid fa-music"></i>
-                      <p>Sonido Hi-Res certificado</p>
+                    <div class="caracteristicas-item" id="feature2">
+                      <i class="fa-solid fa-circle-arrow-right"></i>
+                      
                     </div>
 
-                    <div class="caracteristicas-item">
-                      <i class="fa-solid fa-battery-full"></i>
-                      <p>Autonomía de 50h + carga rápida USB-C</p>
+                    <div class="caracteristicas-item" id="feature3">
+                      <i class="fa-solid fa-circle-arrow-right"></i>
+                      
                     </div>
 
                   </div>
@@ -156,8 +163,8 @@
       </div>
     </footer>
 
-    <script src="/navBar.js"></script>
-    <script src="/main.js"></script>
+    <script src="../navBar.js"></script>
+    <script type="module" src="../Js/detalleProducto.js"></script>
 
   </body>
 </html> 

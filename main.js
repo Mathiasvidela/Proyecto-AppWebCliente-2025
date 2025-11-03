@@ -1,5 +1,5 @@
 //Formulario
-import { airTableToken,baseId,tableName} from "./envs.js";
+import { AIRTABLETOKEN, BASEID,TABLENAME} from "./envs.js";
 
 
 let form = document.querySelector("form");
@@ -45,10 +45,10 @@ function cerrarModal(){
 
 let listProducts = []; //array vacio para llenar con los productos de Airtable
 
+const airTableToken = AIRTABLETOKEN;
+const baseId = BASEID;
+const tableName = TABLENAME;
 const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
-export const airTableToken = airTableToken;
-export const baseId = baseId;
-export const tableName = tableName;
 
 
 
@@ -63,9 +63,13 @@ async function fetchProductsFromAirtable() {
             }
 
         });
+       
+
+
 
         const data = await response.json();
-        console.log(data);
+
+        console.log("Datos de Airtable", data);
 
         const mapProducts = data.records.map(product => ({
             name: product.fields.name,
@@ -74,7 +78,8 @@ async function fetchProductsFromAirtable() {
             img: product.fields.img,
             category: product.fields.category,
             ram: product.fields.ram,
-            storage: product.fields.storage
+            storage: product.fields.storage,
+            id: product.id
         }));
         listProducts = mapProducts;
 
@@ -103,6 +108,7 @@ const categoryButtons = document.querySelectorAll(".category-filter");
 const storageButtons = document.querySelectorAll(".storage-filter");
 const ramButtons = document.querySelectorAll(".ram-filter");
 const priceFilter = document.querySelectorAll(".price-filter");
+const clearBtn = document.querySelector("#clearFilters");
 
 
 
@@ -136,6 +142,7 @@ function createProductCard(product){ // Estructura de la card
     divTitle.appendChild(pDesc);
 
     //precio y botón
+
     const divFooter = document.createElement("div");
     divFooter.classList.add("products-card-footer"); //clase css
 
@@ -144,7 +151,7 @@ function createProductCard(product){ // Estructura de la card
     pPrice.textContent = `$${product.price}`;
 
     const aBtn = document.createElement("a");
-    aBtn.href = "./pages/detalleProducto.html";
+    aBtn.href = `./pages/detalleProducto.html?code=${encodeURIComponent(product.id)}`; //link al detalle del producto
     aBtn.classList.add("btn-fill"); //clase css
     aBtn.innerHTML = `Comprar <i class="fa-solid fa-cart-shopping"></i>`;
 
@@ -379,8 +386,8 @@ priceFilter.forEach(button => {
 
 });
 
-
-
+// Clear filters
+clearBtn.addEventListener("click", clearFilters);
 
 
 
