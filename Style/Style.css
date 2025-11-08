@@ -140,6 +140,29 @@ p {
     transform: scale(1.03);
 }
 
+.btn-fill-gray{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: medium;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: .5rem;
+    background-color: rgb(39, 39, 39);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+}
+
+.btn-fill-gray:hover{
+    background-color: var(--white);
+    color: var(--black);
+    transform: scale(1.03);
+}
+
 .btn-stroke{
     display: flex;
     align-items: center;
@@ -741,6 +764,104 @@ margin: 1rem 0;
   text-decoration: none;
 }
 
+/*---------------------------- TOAST ----------------------------------*/
+
+.toast{
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--background);
+    color: var(--black);
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+.green-icon-toast{
+     font-size: 1.9rem;
+    font-size: 1.9rem;
+    color: green;
+}
+
+.red-icon-toast{
+     font-size: 1.9rem;
+    font-size: 1.9rem;
+    color: red;
+}
+
+.cartCount{
+    position: fixed;
+    top: 0;
+    
+    background-color: var(--accent);
+    color: var(--background);
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+
+/* ---------------------------- ADMIN PAGE ---------------------------------- */
+
+.header-tabla{
+    font-size: 1rem;
+    color: var(--black);
+    padding: 1rem;
+    border-radius: .5rem;
+    
+}
+
+.header-tabla th{
+    text-align: left;
+    font-weight: 600;
+}
+
+.table-container{
+    margin: 2rem 5rem;
+    padding: 1rem;
+    background: var(--white);
+    border: 1px solid rgba(238, 238, 238, 0.08);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+
+
+th, td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    vertical-align: top;
+}
+
+td img {
+    width: 56px;
+    height: 56px; 
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
 
 
 /* ----------------------------Media Queries---------------------------------- */
@@ -1051,6 +1172,8 @@ margin: 1rem 0;
     .ventajas{
         overflow-x: auto;
         flex-wrap: nowrap;
+        scrollbar-color: var(--accent)  transparent;
+        scrollbar-width: nones;
     }
 
     /*----- galeria img -----*/

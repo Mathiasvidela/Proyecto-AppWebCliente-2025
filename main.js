@@ -1,5 +1,6 @@
 //Formulario
 import { AIRTABLETOKEN, BASEID,TABLENAME} from "./envs.js";
+import { updateCartCount } from "./Js/carrito.js";
 
 
 let form = document.querySelector("form");
@@ -100,6 +101,7 @@ fetchProductsFromAirtable();
 
 
 
+
 //Dom Elements
 let productsContainer = document.querySelector("#productsContainer"); //este es el div donde van todos los productos
 const searchBar = document.querySelector("#searchBar");
@@ -109,6 +111,8 @@ const storageButtons = document.querySelectorAll(".storage-filter");
 const ramButtons = document.querySelectorAll(".ram-filter");
 const priceFilter = document.querySelectorAll(".price-filter");
 const clearBtn = document.querySelector("#clearFilters");
+
+
 
 
 
@@ -366,6 +370,8 @@ storageButtons.forEach(button => {
     });
 });
 
+updateCartCount();
+
 
 // PRICE FILTER
 
@@ -388,6 +394,11 @@ priceFilter.forEach(button => {
 
 // Clear filters
 clearBtn.addEventListener("click", clearFilters);
+
+
+
+
+
 
 
 

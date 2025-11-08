@@ -65,6 +65,11 @@
     background-color: var(--background);
 }
 
+.contadores:active {
+  background: #d3d3d3;
+  transform: scale(0.95);
+}
+
 .cantidad:focus{
     outline: none;
     border: 2px solid var(--accent);

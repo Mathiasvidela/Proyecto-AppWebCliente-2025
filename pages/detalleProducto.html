@@ -3,8 +3,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="favicon.ico"/>
-    <link rel="stylesheet" href="/Style/Style.css" />
-    <link rel="stylesheet" href="/Style/productos.css" />
+    <link rel="stylesheet" href="../Style/Style.css" />
+    <link rel="stylesheet" href="../Style/productos.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +13,10 @@
 
     <!--Tipografias usadas-->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="/images/favico.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/favico.svg" type="image/x-icon">
 
     <title>ZhenPhone</title>
+    
 </head>
 <body>
     <header class="sticky">
@@ -25,7 +26,6 @@
           <a href="../index.html"><img src="/images/ZenPhone.svg" alt="Logo" class="logo" /></a>
         </div>
          
-
             <div class="nav-list" id="navList">
               <a href="../index.html">Home</a>
               <a href="/pages/productoPhone.html">Phone</a>
@@ -36,12 +36,24 @@
 
           
 
-          <a href="/pages/cart.html" class="cart-icon"><img src="/images/cart.svg" alt="carrito compras"></a>
+          <div>
+              <a href="../pages/cart.html" class="cart-icon"><img src="../images/cart.svg" alt="carrito compras"></a>
+              <div  class="cartCount"><span id="cartCount"></span></div>
+          </div>
       </nav>
     </header>
 
 
     <main>
+      <div class="toast" id="toast">
+
+        <div id="toastIcon">
+        
+        </div>
+        
+        <div id="toastText"></div>
+
+      </div>
 
         <section class="margin">
             <div class="grid-detalles-producto">
@@ -91,14 +103,14 @@
 
                   <div class="contador">
                     <label for="cantidad">Cantidad</label>
-                    <button class="contadores">-</button>
-                    <input class="cantidad" type="number" name="cantidad" value="1" min="1" step="1">
-                    <button class="contadores">+</button>
+                    <button class="contadores" id="btnMenos">-</button>
+                    <input class="cantidad" id="numValue" name="cantidad" value="1" min="1" step="1">
+                    <button class="contadores" id="btnMas">+</button>
                   </div>
                   
                   <div class="buttons">
-                    <button class="btn-fill">Comprar ahora</button>
-                    <button class="btn-fill-black">Agregar al carrito</button>
+                    <button class="btn-fill" id="btnComprar">Comprar ahora</button>
+                    <button class="btn-fill-black" id="btnCarrito">Agregar al carrito</button>
                   </div>
 
                 </div>
@@ -165,6 +177,7 @@
 
     <script src="../navBar.js"></script>
     <script type="module" src="../Js/detalleProducto.js"></script>
+    <script type="module" src="../Js/carrito.js"></script>
 
   </body>
 </html> 

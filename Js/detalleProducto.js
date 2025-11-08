@@ -1,3 +1,9 @@
+import { checkIcon } from './icons.js';
+import { wrongIcon } from './icons.js';
+import { greenColor } from './icons.js';
+import { redColor } from './icons.js';
+import { updateCartCount } from './carrito.js';
+
 //Airtable API Configuration
 import { AIRTABLETOKEN, BASEID, TABLENAME } from '../envs.js';
 const airTableToken = AIRTABLETOKEN;
@@ -14,6 +20,23 @@ const feature2 = document.querySelector('#feature2');
 const feature3 = document.querySelector('#feature3');
 const titleProduct = document.querySelector('#titleProduct');
 const priceProduct = document.querySelector('#priceProduct');
+
+const btnMenos = document.querySelector('#btnMenos');
+const btnMas = document.querySelector('#btnMas');
+const numValue = document.querySelector('#numValue');
+
+
+const btnCarrito = document.querySelector('#btnCarrito');
+const btnComprar = document.querySelector('#btnComprar');
+
+//toast
+const toast = document.querySelector('#toast');
+const toastText = document.querySelector('#toastText');
+const toastIcon = document.querySelector('#toastIcon');
+
+
+let currentProduct = null;
+
 
 // agarrar la id del producto desde el url
 function getProductIdFromURL() {
@@ -34,7 +57,20 @@ async function fetchProductData(idProducto) {
         const data = await response.json();
         console.log(data);
 
+        const product = {
+            id: data.id,
+            name: data.fields.name,
+            price: data.fields.price,   
+            img: data.fields.img,
+            stock: data.fields.stock,
+            storage: data.fields.storage,
+            ram: data.fields.ram,
+        };
+
+        currentProduct = product;
         renderProductDetails(data.fields)
+
+        return currentProduct;
 
 
     } catch (error) {
@@ -43,9 +79,12 @@ async function fetchProductData(idProducto) {
 }
 
 
+
+
 // inicializacion
 const idProducto = getProductIdFromURL();
 fetchProductData(idProducto);
+
 
 
 //mostrar producto en el DOM
@@ -61,14 +100,14 @@ function renderProductDetails(campo) {
     if (!campo.storage) {
         storageInfo.innerHTML = '';
     } else {
-        storageInfo.innerHTML = `<p class="storage-btn">${campo.storage} GB</p>`;
+        storageInfo.innerHTML = `<p class="storage-btn"><span class="font-bold">${campo.storage}</span> DE ALMACENAMIENTO</p>`;
     }
 
     // condicion para la ram
     if (!campo.ram) {
         ramInfo.innerHTML = '';
     } else {
-        ramInfo.innerHTML = `<p class="storage-btn">${campo.ram} GB RAM</p>`;
+        ramInfo.innerHTML = `<p class="storage-btn"><span class="font-bold">${campo.ram}</span> RAM</p>`;
     }
 
 
@@ -79,3 +118,64 @@ function renderProductDetails(campo) {
     feature3.appendChild(document.createElement("p")).textContent = campo.feature3;
 
  }
+
+
+ // Contador de cantidad
+    btnMenos.addEventListener('click', () => {
+        let valor = numValue.value;
+        if (valor > 1) {
+            numValue.value = parseInt(valor) - 1;
+        }
+    });
+
+    btnMas.addEventListener('click', () => {
+        let valor = numValue.value;
+        numValue.value = parseInt(valor) + 1;
+    });
+
+
+    // boton para agregar al carrito
+    
+    btnCarrito.addEventListener('click', () => {
+       
+
+        if (currentProduct.stock <= 0) {
+            toastMessage(`${currentProduct.name} sin stock`, false);
+            return;
+        }else{
+
+            const cantidad = parseInt(numValue.value);
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({...currentProduct, quantity: cantidad});
+            localStorage.setItem('cart', JSON.stringify(cart));
+        
+        }
+
+        toastMessage(`${currentProduct.name} agregado al carrito`, true);
+        updateCartCount();
+
+
+        
+    });
+
+
+    // toast funcion
+
+    function toastMessage(message, isSuccess) {
+        
+        setTimeout(() => {
+            if (isSuccess) {
+                toastIcon.innerHTML = checkIcon;
+                toastIcon.className = greenColor;
+            } else {
+                toastIcon.innerHTML = wrongIcon;
+                toastIcon.className = redColor;
+            }
+            toastText.innerHTML = message;
+            toast.style.opacity = 1;
+        }, 100);
+
+        setTimeout(() => {
+            toast.style.opacity = 0;
+        }, 2000);
+    }

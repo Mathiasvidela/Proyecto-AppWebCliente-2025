@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="../Style/Style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!--Tipografias usadas-->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/favico.svg" type="image/x-icon">
+
+    <title>ZhenPhone Admin</title>
+  </head>
+  
+  <body>
+ 
+    <header class="sticky">
+      <nav class="nav-header margin">
+
+        <h3>Panel de Administración</h3>
+
+
+        <div class="logo-btn">
+           <button class="menu-btn" id="menuBtn" ><i class="fa-solid fa-bars"></i></button>
+          <a href="../index.html"><img src="../images/ZenPhone.svg" alt="Logo" class="logo" /></a>
+        </div>
+
+      </nav>
+    </header>
+
+    <main>
+        <div class="table-container">
+
+            <table id="tbl">
+
+                <!-- cabecera -->
+                <thead class="header-tabla">
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Categoría</th>
+                        <th>RAM</th>
+                        <th>Almacenamiento</th>
+                        <th>feature 1</th>
+                        <th>feature 2</th>
+                        <th>feature 3</th>
+                        <th>Acciones</th>
+                        
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    <!-- esto se tiene que modificar con js para que caruge todos los prodcutos -->
+                <tr>
+                    <td><img src="../images/zhenphonex.png" alt="Zhen Phone X Pro"></td>
+
+                    <td>
+                        <div>Zhen Phone X Pro</div>
+                    </td>
+
+                    <td>$899.00</td>
+
+                    <td><span class="chip">Celulares</span></td>
+
+                    <td>8 GB</td>
+
+                    <td>256 GB</td>
+
+                    <td>Cámara 108 MP</td>
+
+                    <td>Batería 5000 mAh</td>
+
+                    <td>Pantalla 120 Hz</td>
+
+                    <td class="actions">
+                    <button class="btn-fill-black" id="btnEditar">Editar</button>
+                    <button class="btn-fill" id="btnEliminar">Eliminar</button>
+                    </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+  
+
+  </body>
+</html>
