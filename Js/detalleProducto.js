@@ -2,7 +2,7 @@ import { checkIcon } from './icons.js';
 import { wrongIcon } from './icons.js';
 import { greenColor } from './icons.js';
 import { redColor } from './icons.js';
-import { updateCartCount } from './carrito.js';
+import { updateCartCount } from '../Js/refreshCart.js';
 
 //Airtable API Configuration
 import { AIRTABLETOKEN, BASEID, TABLENAME } from '../envs.js';
@@ -144,9 +144,22 @@ function renderProductDetails(campo) {
             return;
         }else{
 
+
             const cantidad = parseInt(numValue.value);
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push({...currentProduct, quantity: cantidad});
+
+            
+            const cantProduct = cart.findIndex(index =>
+            index.id === currentProduct.id
+            );
+
+            //busca si hay otro producto producto con el mismo id
+            if (cantProduct >= 0) {
+            cart[cantProduct].quantity = parseInt(cart[cantProduct].quantity ) + cantidad;
+            } else {
+            cart.push({ ...currentProduct, quantity: cantidad });
+            }
+         
             localStorage.setItem('cart', JSON.stringify(cart));
         
         }

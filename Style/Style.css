@@ -135,7 +135,7 @@ p {
 }
 
 .btn-fill-black:hover{
-    background-color: var(--white);
+    background-color: rgb(219, 219, 219);
     color: var(--black);
     transform: scale(1.03);
 }
@@ -500,6 +500,21 @@ p {
     background-color: var(--background);
     font-size: 1.8rem;
     text-align: center;
+}
+
+.out-of-stock-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8rem;
+    height: 2rem;
+    background-color: rgba(0, 0, 0, 0.473);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: .5rem;
 }
 
 .card-product:hover{

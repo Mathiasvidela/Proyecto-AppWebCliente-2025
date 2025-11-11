@@ -26,7 +26,7 @@
       <nav class="nav-header margin">
         <div class="logo-btn">
            <button class="menu-btn" id="menuBtn" ><i class="fa-solid fa-bars"></i></button>
-          <a href="../index.html"><img src="./images/ZenPhone.svg" alt="Logo" class="logo" /></a>
+          <a href="../index.html"><img src="../images/ZenPhone.svg" alt="Logo" class="logo" /></a>
         </div>
          
 
@@ -53,46 +53,25 @@
       <h2>Carrito de <span class="font-bold text-accent">compras</span></h2>
     </div>
     
-    <section class="cart margin">
+    <section class="cart margin" id="cartItems">
 
-        <div class="cart-product">
+       <div class="cart-products" id="cartProducts">
 
-            <div class="cart-img">
-                <img src="./images/ZhenHeadphones Elite.png" alt="">
-            </div>
-
-            <div class="cart-description">
-                <h4>ZhenHeadphones Elite</h4>
-                <p>#001579896665418</p>
-                <p>128GB</p>
-            </div>
-
-            <div class="cart-price">
-                <h4>$650</h4>
-            </div>
-
-            <div class="contador">
-                <label for="cantidad">Cantidad</label>
-                <button class="contadores">-</button>
-                <input class="cantidad" type="number" name="cantidad" value="1" min="1" step="1">
-                <button class="contadores">+</button>
-            </div>
-
-        </div>
+       </div>
 
         <div class="cart-pedido">
 
-            <h4>Tu Pedido (<span>1</span>)</h4>
+            <h4>Tu Pedido (<span id="cantItems">1</span>)</h4>
             <hr>
 
             <div class="flex-pedido">
                 <p>SubTotal</p>
-                <p>$650</p>
+                <p id="subTotal">$650</p>
             </div>
 
             <div class="flex-pedido">
                 <p>Envio</p>
-                <p>Gratis</p>
+                <p id="envio"></p>
             </div>
 
             <div class=" flex-pedido">
@@ -102,17 +81,26 @@
 
             <div class="flex-pedido">
                 <h4>Total</h4>
-                <h4>$<span>786,5</span></h4>
+                <h4>$<span id="total">786,5</span></h4>
             </div>
-
-            <button class="btn-fill">Comprar</button>
+            
+            <div class="acciones">
+              <button class="btn-fill" id="comprarBtn">Comprar</button>
+              <button class="btn-fill-black" id="vaciarBtn">Vaciar carrito</button>
+            </div>
         
         </div>
 
-        <div class="flex-pedido cupon">
+        <div class="cupon">
+
+          <div class="flex-pedido">
             <p>¿Tienes un cupon de descuento?</p>
             <button class="btn-mas">+</button>
-        </div>
+          </div>
+
+          <input type="text" placeholder="Ingrese su Cupon" class="cupon" id="descuento">
+            
+        </div> 
 
        
     </section>
@@ -146,7 +134,9 @@
       </div>
     </footer>
 
-    <script src="./navBar.js"></script>
-    <script src="./main.js"></script>
+    <script src="../navBar.js"></script>
+    
+    <script type="module" src="../Js/carrito.js"></script>
+    <script type="module" src="../Js/refreshCart.js"></script>
   </body>
 </html>

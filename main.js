@@ -1,6 +1,6 @@
 //Formulario
 import { AIRTABLETOKEN, BASEID,TABLENAME} from "./envs.js";
-import { updateCartCount } from "./Js/carrito.js";
+
 
 
 let form = document.querySelector("form");
@@ -80,7 +80,8 @@ async function fetchProductsFromAirtable() {
             category: product.fields.category,
             ram: product.fields.ram,
             storage: product.fields.storage,
-            id: product.id
+            id: product.id,
+            stock: product.fields.stock
         }));
         listProducts = mapProducts;
 
@@ -117,12 +118,23 @@ const clearBtn = document.querySelector("#clearFilters");
 
 
 
+
+
 //funcion que crea los elementos del producto
 function createProductCard(product){ // Estructura de la card
 
     //contenedor principal article
     const article = document.createElement("article");
     article.classList.add("products-card"); //clase css
+
+    //Sin Stock
+    if (product.stock <= 0) {
+        article.style.position = 'relative';
+        const outOfStockDiv = document.createElement("div");
+        outOfStockDiv.classList.add("out-of-stock-overlay");
+        outOfStockDiv.innerText = "Sin Stock";
+        article.appendChild(outOfStockDiv);
+    }
 
     //Imagen
     const divImg = document.createElement("div");
@@ -370,7 +382,14 @@ storageButtons.forEach(button => {
     });
 });
 
-updateCartCount();
+
+
+
+
+
+
+
+
 
 
 // PRICE FILTER
@@ -394,6 +413,8 @@ priceFilter.forEach(button => {
 
 // Clear filters
 clearBtn.addEventListener("click", clearFilters);
+
+
 
 
 
