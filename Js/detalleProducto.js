@@ -111,7 +111,7 @@ function renderProductDetails(campo) {
     }
 
 
-    productImg.innerHTML = `<img class="producto" src="${campo.img}">`;
+    productImg.innerHTML = `<img class="producto" src=".${campo.img}">`;
 
     feature1.appendChild(document.createElement("p")).textContent = campo.feature1;
     feature2.appendChild(document.createElement("p")).textContent = campo.feature2;
@@ -148,12 +148,12 @@ function renderProductDetails(campo) {
             const cantidad = parseInt(numValue.value);
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-            
+             //busca si hay otro producto producto con el mismo id
             const cantProduct = cart.findIndex(index =>
             index.id === currentProduct.id
             );
 
-            //busca si hay otro producto producto con el mismo id
+           
             if (cantProduct >= 0) {
             cart[cantProduct].quantity = parseInt(cart[cantProduct].quantity ) + cantidad;
             } else {

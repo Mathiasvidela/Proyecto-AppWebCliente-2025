@@ -67,7 +67,7 @@ fetchProductsFromAirtable();
 function createTableRow(product) {
     itemsInsert.innerHTML += `
                 <tr>
-                    <td><img src="${product.img}" alt="${product.name}"></td>
+                    <td><img src=".${product.img}" alt="${product.name}"></td>
 
                     <td>
                         <div>${product.name}</div>

@@ -66,7 +66,7 @@ function getCartItems() {
 
   totalItems();
 
-}
+};
 
 
 
@@ -82,8 +82,8 @@ function totalItems(){
     let subTotalPrice = 0;
 
     cartItems.forEach(item => {
-        cantidadTotal += item.quantity || 0;
-        subTotalPrice += (item.price * (item.quantity || 0));
+        cantidadTotal += item.quantity;
+        subTotalPrice += (item.price * (item.quantity));
     });
 
     if (cantidadTotal < 1000) {
