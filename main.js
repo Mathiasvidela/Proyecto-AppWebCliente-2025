@@ -81,7 +81,8 @@ async function fetchProductsFromAirtable() {
             ram: product.fields.ram,
             storage: product.fields.storage,
             id: product.id,
-            stock: product.fields.stock
+            stock: product.fields.stock,
+            
         }));
         listProducts = mapProducts;
 
@@ -193,10 +194,10 @@ function renderProducts(products) {
 }
 
 
-function filterProducts(text) {
+/*function filterProducts(text) {
     let filtered = listProducts.filter(product => product.name.toLowerCase().includes(text.toLowerCase()));
     return filtered;
-}
+}*/
 
 
 
