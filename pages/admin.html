@@ -17,6 +17,8 @@
 
     <title>ZhenPhone Admin</title>
   </head>
+
+  
   
   <body>
  
@@ -35,6 +37,19 @@
     </header>
 
     <main>
+
+      <section class="headerAdmin">
+
+        <div>
+          <input type="text" id="txtBuscarAdmin" class="buscadorAdmin" placeholder="Buscar producto por nombre">
+        </div>
+
+        <div class="btnAgregar">
+          <a id="btnAgregar" class="btn-fill">Agregar nuevo producto <i class="fa-solid fa-plus"></i></a>
+        </div>
+
+      </section>
+
         <div class="table-container">
 
             <table id="tbl">
@@ -46,6 +61,7 @@
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Categoría</th>
+                        <th>Descripción</th>
                         <th>RAM</th>
                         <th>Almacenamiento</th>
                         <th>feature 1</th>
@@ -59,35 +75,7 @@
                 </thead>
 
                 <tbody id="itemsInsert">
-                    <!-- esto se tiene que modificar con js para que caruge todos los prodcutos -->
-                <!--<tr>
-                    <td><img src="../images/zhenphonex.png" alt="Zhen Phone X Pro"></td>
-
-                    <td>
-                        <div>Zhen Phone X Pro</div>
-                    </td>
-
-                    <td>$899.00</td>
-
-                    <td><span class="chip">Celulares</span></td>
-
-                    <td>8 GB</td>
-
-                    <td>256 GB</td>
-
-                    <td>Cámara 108 MP</td>
-
-                    <td>Batería 5000 mAh</td>
-
-                    <td>Pantalla 120 Hz</td>
-
-                    <td class="actions">
-                    <button class="btn-fill-black" id="btnEditar">Editar</button>
-                    <button class="btn-fill" id="btnEliminar">Eliminar</button>
-                    </td>
-
-                </tr>-->
-
+                    <!-- los items se insertan desde js -->
                 </tbody>
             </table>
         </div>

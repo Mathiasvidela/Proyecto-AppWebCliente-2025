@@ -8,9 +8,11 @@ const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
 
 // elemtnos del DOM
 
-const btnEditar = document.querySelectorAll('#btnEditar');
-const btnEliminar = document.querySelectorAll('#btnEliminar');
+const btnAgregar = document.getElementById('btnAgregar');
+
 const itemsInsert = document.getElementById('itemsInsert');
+const txtBuscarAdmin = document.getElementById('txtBuscarAdmin');
+
 // fetch de productos desde Airtable
 
 export let listProducts = [];
@@ -26,20 +28,15 @@ async function fetchProductsFromAirtable() {
             }
 
         });
-       
-
-
 
         const data = await response.json();
 
-        console.log("Datos de Airtable", data);
-
         const mapProducts = data.records.map(product => ({
-            name: product.fields.name,
-            description: product.fields.description,
-            price: product.fields.price,
             img: product.fields.img,
-            category: product.fields.category,
+            name: product.fields.name,
+            price: product.fields.price,
+            category: product.fields.description,
+            description: product.fields.description,
             ram: product.fields.ram,
             storage: product.fields.storage,
             id: product.id,
@@ -52,6 +49,7 @@ async function fetchProductsFromAirtable() {
 
         renderProducts(mapProducts);
 
+        console.log('Productos obtenidos de Airtable:', listProducts);
 
     }
 
@@ -74,8 +72,10 @@ function createTableRow(product) {
                     </td>
 
                     <td>${product.price}</td>
-
-                    <td><span class="chip">${product.category}</span></td>
+                    
+                    <td>${product.category}</td>
+                    
+                    <td>${product.description}</td>
 
                     <td>${product.ram}</td>
 
@@ -90,8 +90,8 @@ function createTableRow(product) {
                     <td>${product.stock}</td>
 
                     <td class="actions">
-                    <button class="btn-fill-black" id="btnEditar">Editar</button>
-                    <button class="btn-fill" id="btnEliminar">Eliminar</button>
+                    <button class="btn-fill-black btnEditar" data-id="${product.id}" >Editar</button>
+                    <button class="btn-fill btnEliminar" data-id="${product.id}" >Eliminar</button>
                     </td>
                     
 
@@ -100,11 +100,43 @@ function createTableRow(product) {
 }
 
 
-// Renderizar productos en el DOM
+
+
+// Renderizar productos en el DOM y agregar funcionalidad a los botones
 function renderProducts(products) {
+
+
     itemsInsert.innerHTML = ''; // Limpiar el contnido
     products.forEach(product => {
         createTableRow(product);
     });
 
+    //botones de productos
+    let btnEditar = document.querySelectorAll('.btnEditar');
+    let btnEliminar = document.querySelectorAll('.btnEliminar');
+
+    //editar productos
+    btnEditar.forEach((button, index) => {
+        
+        const id = products[index].id;
+        button.addEventListener('click', () => {
+            window.location.href = `../pages/formAdmin.html?action=edit&id=${encodeURIComponent(id)}`;
+        });
+
+    });
+
+    //agregar productos
+    btnAgregar.addEventListener('click', () => {
+        window.location.href = '../pages/formAdmin.html?action=add';
+    });
+
 }
+
+//buscar productos
+txtBuscarAdmin.addEventListener('input', () => {
+    const busqueda = txtBuscarAdmin.value.toLowerCase();
+    const productosFiltrados = listProducts.filter(product =>
+        product.name.toLowerCase().includes(busqueda)
+    );
+    renderProducts(productosFiltrados);
+});

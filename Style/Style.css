@@ -880,7 +880,74 @@ td {
   border-bottom: 1px solid #e0e0e0;
 }
 
+.headerAdmin{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5rem;
+}
 
+.btn{
+    width: 2rem;
+}
+
+.headerForm{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerForm a{
+    width: 20%;
+    height: 100%;
+}
+
+.buscadorAdmin{
+    width: 20rem;
+    height: 100%;
+    padding: 1rem;
+    border-radius: .5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+/* ---------------------------- formAdmin ---------------------------------- */
+
+.formAdmin{
+    margin: 2rem 5rem;
+    padding: 2rem;
+    background: var(--white);
+    border: 1px solid rgba(238, 238, 238, 0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.formAdmin label{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.formAdmin input, .formAdmin textarea{
+    margin-top: .5rem;
+    padding: .8rem 1rem;
+    border-radius: .5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+.formAdmin label {
+     margin-top: 1rem;
+}
+
+.formAdmin button{
+    margin-top: 1rem;
+}
 
 
 /* ----------------------------Media Queries---------------------------------- */

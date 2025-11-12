@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="../Style/Style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!--Tipografias usadas-->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/favico.svg" type="image/x-icon">
+
+    <title>ZhenPhone Admin</title>
+  </head>
+  
+  <body>
+ 
+    <header class="sticky">
+      <nav class="nav-header margin">
+
+        <h3>Panel de Administración</h3>
+
+
+        <div class="logo-btn">
+           <button class="menu-btn" id="menuBtn" ><i class="fa-solid fa-bars"></i></button>
+          <a href="../index.html"><img src="../images/ZenPhone.svg" alt="Logo" class="logo" /></a>
+        </div>
+
+      </nav>
+    </header>
+
+    <main>
+        
+        <section class="formAdmin">
+            
+            <div class="headerForm">
+                <a href="../pages/admin.html" class="btn-fill"><i class="fa-solid fa-arrow-left"></i>Volver al Panel</a>
+                <h2 id="tituloForm"></h2>
+            </div>
+
+
+            <label for="formImg">Imagen (URL)</label>
+            <input type="text" id="formImg" placeholder="Imagen">
+
+            <label for="formName">Nombre</label>
+            <input type="text" id="formName" placeholder="Nombre">
+            
+            <label for="formPrice">Precio</label>
+            <input type="number" id="formPrice" placeholder="Precio">
+
+            <label for="formCategory">Categoría</label>
+            <input type="text" id="formCategory" placeholder="Categoría">
+
+            <label for="formRam">RAM</label>
+            <input type="text" id="formRam" placeholder="RAM">
+
+            <label for="formStorage">Almacenamiento</label>
+            <input type="text" id="formStorage" placeholder="Almacenamiento">
+
+            <label for="formDescription">Descripción</label>
+            <input type="text" id="formDescription" placeholder="Descripción">
+
+            <label for="formFeature1">Feature 1</label>
+            <input type="text" id="formFeature1" placeholder="Feature 1">
+
+            <label for="formFeature2">Feature 2</label>
+            <input type="text" id="formFeature2" placeholder="Feature 2">
+            
+            <label for="formFeature3">Feature 3</label>
+            <input type="text" id="formFeature3" placeholder="Feature 3">
+
+            <label for="formStock">Stock</label>
+            <input type="number" id="formStock" placeholder="Stock">
+
+
+            <button id="btnAgregar" class="btn-fill">Agregar Producto</button>
+        </section>
+
+    </main>
+
+  
+    <script type="module" src="../Js/crudForm.js"></script>
+
+  </body>
+</html>
