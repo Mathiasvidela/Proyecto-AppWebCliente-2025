@@ -20,6 +20,8 @@ const fromFeature1 = document.getElementById('formFeature1');
 const fromFeature2 = document.getElementById('formFeature2');
 const fromFeature3 = document.getElementById('formFeature3');
 
+const formSubmit = document.querySelector("#formAdmin");
+
 //get action y id del from URL
 const params = new URLSearchParams(location.search);
 const action = params.get('action');
@@ -63,10 +65,17 @@ async function fetchProductData(productId) {
 }
 
 
+//validacion de tipo de accion segun url, editar o agregar
+
 if (action === 'add') {
     formTitle.textContent = 'Agregar Producto';
 }
+
+
+
 else if (action === 'edit') {
+
+
     formTitle.textContent = 'Editar Producto';
     console.log("ID del producto a editar:", productId);
 
@@ -87,4 +96,73 @@ else if (action === 'edit') {
     });  
 
 
+    formSubmit.addEventListener('submit', async (event)=>{
+
+    event.preventDefault()
+
+    //se crea el objeto producto usando los datos de los inputs
+      const product = {
+        img: formImg.value,
+        name: formName.value,
+        price: Number(formPrice.value),
+        category: formCategory.value,
+        description: formDescription.value,
+        ram: formRam.value,
+        storage: formStorage.value,
+        stock: formStock.value,
+        feature1: fromFeature1.value,
+        feature2: fromFeature2.value,
+        feature3: fromFeature3.value
+    };
+
+    await editProductInAirtable(productId, product)
+  
+
+
+});
+
+
 }
+
+
+//Editar un producto en Airtable
+
+async function editProductInAirtable(productId, product) {
+    try{
+
+        const response = await fetch(`${airTableUrl}/${productId}`, {
+            method: 'PATCH',
+            headers: {
+                'Authorization': `Bearer ${airTableToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                fields: {
+                    img : product.img,
+                    name: product.name,
+                    price : product.price,
+                    category : product.category,
+                    description : product.description,
+                    ram : product.ram,
+                    storage : product.storage,
+                    stock : product.stock,
+                    feature1 : product.feature1,
+                    feature2 : product.feature2,
+                    feature3 : product.feature3
+                }
+            })
+        });
+        const data = await response.json();
+        console.log(data);
+
+
+
+        
+
+    } catch (error) {
+        console.error('Error editing product:', error);
+    }
+}
+
+
+

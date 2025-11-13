@@ -213,6 +213,11 @@ p {
     list-style: none;
 }
 
+.icons_nav{
+    display: flex;
+    background-color: #f35c2e;
+}
+
 .nav-list a{
     color: var(--black);
     transition: color .3s ease-in-out;
@@ -839,6 +844,7 @@ margin: 1rem 0;
 .header-tabla th{
     text-align: left;
     font-weight: 600;
+    padding-bottom: 2rem;
 }
 
 .table-container{
@@ -950,6 +956,17 @@ td {
 }
 
 
+.btn-back{
+    width: 20rem;
+    
+}
+
+.formAdmin{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
 /* ----------------------------Media Queries---------------------------------- */
 
 @media (max-width:1151px ){
@@ -1031,11 +1048,11 @@ td {
         width: 1.3rem;
     }
 
+
     .nav-list{
        overflow: hidden;
         max-height: 0;
         opacity: 0;
-        
     }
 
     .active{

@@ -36,14 +36,14 @@
 
     <main>
         
-        <section class="formAdmin">
+        <section class="formAdmin" id="formAdmin">
             
             <div class="headerForm">
                 <a href="../pages/admin.html" class="btn-fill"><i class="fa-solid fa-arrow-left"></i>Volver al Panel</a>
                 <h2 id="tituloForm"></h2>
             </div>
 
-
+            <form class="formAdmin">
             <label for="formImg">Imagen (URL)</label>
             <input type="text" id="formImg" placeholder="Imagen">
 
@@ -78,7 +78,10 @@
             <input type="number" id="formStock" placeholder="Stock">
 
 
-            <button id="btnAgregar" class="btn-fill">Agregar Producto</button>
+            <button type="submit" id="btnAgregar" class="btn-fill">Agregar Producto</button>
+
+            </form>
+
         </section>
 
     </main>
