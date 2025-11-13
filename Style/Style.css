@@ -967,6 +967,74 @@ td {
     width: auto;
 }
 
+/*--------------------------Login------------------*/
+
+.img-login{
+    background-image: url(../images/fondo-login.jpg);
+    background-size:cover;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.container-login{
+    border-radius: 1rem;
+    background-color: var(--background);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    height: 40rem;
+    width: 60rem;
+}
+
+.datos{
+    position: relative;
+    padding: 0 2rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.datos input{
+    margin-top: .5rem;
+    padding: .8rem 1rem;
+    border-radius: .5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.back{
+    position: absolute;
+    top: 0;
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--black);
+    border-radius: 100%;
+    color: var(--background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* ----------------------------Media Queries---------------------------------- */
 
 @media (max-width:1151px ){
