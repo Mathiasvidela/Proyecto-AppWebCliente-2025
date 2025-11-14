@@ -13,6 +13,10 @@ const btnAgregar = document.getElementById('btnAgregar');
 const itemsInsert = document.getElementById('itemsInsert');
 const txtBuscarAdmin = document.getElementById('txtBuscarAdmin');
 
+const cancelDelete = document.getElementById('cancelDelete');
+const confirmDelete = document.getElementById('confirmDelete');
+const deleteModal = document.getElementById('deleteModal');
+
 // fetch de productos desde Airtable
 
 export let listProducts = [];
@@ -117,7 +121,7 @@ function renderProducts(products) {
 
     //editar productos
     btnEditar.forEach((button, index) => {
-        
+
         const id = products[index].id;
         button.addEventListener('click', () => {
             window.location.href = `../pages/formAdmin.html?action=edit&id=${encodeURIComponent(id)}`;
@@ -130,13 +134,76 @@ function renderProducts(products) {
         window.location.href = '../pages/formAdmin.html?action=add';
     });
 
+
+    //eliminar productos
+    btnEliminar.forEach(button => {
+
+        button.addEventListener('click', async () => { 
+            const itemId = button.dataset.id;
+            console.log('ID a eliminar:', itemId);
+
+           confirmDeleteModal();
+
+            confirmDelete.addEventListener('click', async () => {
+                await deleteProductFromAirtable(itemId);
+                fetchProductsFromAirtable();
+            });
+
+            cancelDelete.addEventListener('click', () => {
+                cancelDeleteModal();
+            });
+
+
+        });
+
+    });
+
+
+
+}
+
+function confirmDeleteModal() {
+    deleteModal.classList.remove('hidden');
+}
+
+function cancelDeleteModal() {
+    deleteModal.classList.add('hidden');
+    confirmDelete.style.display = 'flex';
 }
 
 //buscar productos
 txtBuscarAdmin.addEventListener('input', () => {
+
     const busqueda = txtBuscarAdmin.value.toLowerCase();
     const productosFiltrados = listProducts.filter(product =>
         product.name.toLowerCase().includes(busqueda)
+
     );
+
     renderProducts(productosFiltrados);
+
+
 });
+
+async function deleteProductFromAirtable(itemId) {
+    try {
+        const response = await fetch(`${airTableUrl}/${itemId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${airTableToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+
+        console.log('se elimino');
+        deleteModal.classList.add('hidden'); //desaparece el modal
+
+    } catch (error) {
+        console.error('error al eliminar el producto:', error);
+    }
+}
+
+
+
+

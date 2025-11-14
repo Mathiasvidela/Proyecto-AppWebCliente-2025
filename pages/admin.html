@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="favicon.ico"/>
+    <link rel="icon" href="../images/favico.svg"/>
     <link rel="stylesheet" href="../Style/Style.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,6 +83,22 @@
             </table>
         </div>
     </main>
+
+
+    <!-- modal eliminar -->
+  <div id="deleteModal" class="modal hidden">
+
+    <div class="modal-content">
+      <h2>Eliminar producto</h2>
+      <p>¿Seguro que querés eliminar este producto?</p>
+
+      <div class="modal-actions">
+        <button id="confirmDelete" class="btn-fill">Eliminar</button>
+        <button id="cancelDelete" class="btn-fill-black">Cancelar</button>
+      </div>
+    </div>
+
+  </div>
 
   
     <script type="module" src="../Js/admin.js"></script>
