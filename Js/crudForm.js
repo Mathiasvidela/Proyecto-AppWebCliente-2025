@@ -19,8 +19,12 @@ const formRam = document.getElementById('formRam');
 const fromFeature1 = document.getElementById('formFeature1');
 const fromFeature2 = document.getElementById('formFeature2');
 const fromFeature3 = document.getElementById('formFeature3');
-
 const formSubmit = document.querySelector("#formAdmin");
+
+const btnAceptarModal = document.getElementById('btnAceptarModal');
+const mensajeModal = document.getElementById('mensajeModal');
+const modalSuccess = document.getElementById('modalSuccess');
+
 
 //get action y id del from URL
 const params = new URLSearchParams(location.search);
@@ -69,6 +73,31 @@ async function fetchProductData(productId) {
 
 if (action === 'add') {
     formTitle.textContent = 'Agregar Producto';
+
+    formSubmit.addEventListener('submit', async (event)=>{
+
+    event.preventDefault()
+
+    //datos que se cargan en el form
+      const product = {
+        img: formImg.value,
+        name: formName.value,
+        price: formPrice.value,
+        category: formCategory.value,
+        description: formDescription.value,
+        ram: formRam.value,
+        storage: formStorage.value,
+        stock: formStock.value ?? '',
+        feature1: fromFeature1.value,
+        feature2: fromFeature2.value,
+        feature3: fromFeature3.value
+    };
+
+    await addProductToAirtable(product)
+
+
+});
+
 }
 
 
@@ -104,7 +133,7 @@ else if (action === 'edit') {
       const product = {
         img: formImg.value,
         name: formName.value,
-        price: Number(formPrice.value),
+        price: formPrice.value,
         category: formCategory.value,
         description: formDescription.value,
         ram: formRam.value,
@@ -140,7 +169,7 @@ async function editProductInAirtable(productId, product) {
                 fields: {
                     img : product.img,
                     name: product.name,
-                    price : product.price,
+                    price : Number(product.price),
                     category : product.category,
                     description : product.description,
                     ram : product.ram,
@@ -155,9 +184,9 @@ async function editProductInAirtable(productId, product) {
         const data = await response.json();
         console.log(data);
 
-
-
-        
+        //modal
+        modalSuccess.classList.remove('hidden');
+        mensajeModal.textContent = 'Producto editado con exito';
 
     } catch (error) {
         console.error('Error editing product:', error);
@@ -165,4 +194,49 @@ async function editProductInAirtable(productId, product) {
 }
 
 
+//agregar un producto a airtable
 
+async function addProductToAirtable(product){
+    try{
+        const response = await fetch(airTableUrl, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${airTableToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                fields: {
+                    img : product.img,
+                    name: product.name,
+                    price : Number(product.price),
+                    category : product.category,
+                    description : product.description,
+                    ram : product.ram,
+                    storage : product.storage,
+                    stock : product.stock,
+                    feature1 : product.feature1,
+                    feature2 : product.feature2,
+                    feature3 : product.feature3
+                }
+            })
+        });
+
+        //modal cargado con exito
+        modalSuccess.classList.remove('hidden');
+        mensajeModal.textContent = 'Producto cargado con exito';
+
+        const data = await response.json();
+        console.log(data);
+
+
+    } catch (error) {
+        console.error('Error adding product:', error);
+    }
+    
+}
+
+
+//cerrar modal ventana
+btnAceptarModal.addEventListener('click', () => {
+    modalSuccess.classList.add('hidden');
+});
