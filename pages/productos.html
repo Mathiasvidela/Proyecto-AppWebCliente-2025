@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="favicon.ico"/>
-    <link rel="stylesheet" href="../Style/Style.css" />
-    <link rel="stylesheet" href="../Style/productos.css" />
-    <link rel="stylesheet" href="../Style/cart.css" />
+    <link rel="stylesheet" href="/Style/Style.css" />
+    <link rel="stylesheet" href="/Style/productos.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,11 +14,10 @@
 
     <!--Tipografias usadas-->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="../images/favico.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/favico.svg" type="image/x-icon">
 
     <title>ZhenPhone</title>
 </head>
-
 <body>
     <header class="sticky">
       <nav class="nav-header margin">
@@ -30,7 +27,7 @@
         </div>
          
 
-           <div class="nav-list" id="navList">
+          <div class="nav-list" id="navList">
               <a href="../index.html">Home</a>
               <a href="../pages/productos.html?category=Celulares">Phone</a>
               <a href="../pages/productos.html?category=Smart Watch">Watch</a>
@@ -41,79 +38,59 @@
           
 
           <div>
-              <a href="../pages/cart.html" class="cart-icon"><img src="../images/cart.svg" alt="carrito compras"></a>
+              <a href="./pages/cart.html" class="cart-icon"><img src="../images/cart.svg" alt="carrito compras"></a>
               <div  class="cartCount"><span id="cartCount"></span></div>
           </div>
       </nav>
     </header>
 
 
-   <main>
-    <div class="margin">
-      <h2>Carrito de <span class="font-bold text-accent">compras</span></h2>
-    </div>
-    
-    <section class="cart margin" id="cartItems">
+    <main id="productsContainer">
 
-       <div class="cart-products" id="cartProducts">
 
-       </div>
+    </main>
 
-        <div class="cart-pedido">
-
-            <h4>Tu Pedido (<span id="cantItems">1</span>)</h4>
-            <hr>
-
-            <div class="flex-pedido">
-                <p>SubTotal</p>
-                <p id="subTotal">$650</p>
-            </div>
-
-            <div class="flex-pedido">
-                <p>Envio</p>
-                <p id="envio"></p>
-            </div>
-
-            <div class=" flex-pedido">
-                <p>IVA</p>
-                <p>21%</p>
-            </div>
-
-            <div class="flex-pedido">
-                <h4>Total</h4>
-                <h4>$<span id="total">786,5</span></h4>
-            </div>
-            
-            <div class="acciones">
-              <button class="btn-fill" id="comprarBtn">Comprar</button>
-              <button class="btn-fill-black" id="vaciarBtn">Vaciar carrito</button>
-            </div>
-        
+    <section class="ventajas margin">
+      <div class="ventaja-item">
+        <div class="icono">
+          <i class="fa-solid fa-truck-fast"></i>
         </div>
+        <p>Envío<br><span class="font-bold">gratis</span></p>
+      </div>
 
-        <div class="cupon">
+      <div class="ventaja-item">
+        <div class="icono">
+          <i class="fa-solid fa-wallet"></i>
+        </div>
+        <p>Pago<br><span class="font-bold">seguro</span></p>
+      </div>
 
-          <div class="flex-pedido">
-            <p>¿Tienes un cupon de descuento?</p>
-            <button class="btn-mas">+</button>
-          </div>
+      <div class="ventaja-item">
+        <div class="icono">
+          <i class="fa-solid fa-headset"></i>
+        </div>
+        <p>Soporte<br><span class="font-bold">24/7</span></p>
+      </div>
 
-          <input type="text" placeholder="Ingrese su Cupon" class="cupon" id="descuento">
-            
-        </div> 
-
-       
+      <div class="ventaja-item">
+        <div class="icono">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <p>Garantía<br><span class="font-bold">24 meses</span></p>
+      </div>
     </section>
 
+   
+    <section class="cta margin">
+      <div class="cta-info">
+        <h4>Descrubrí tu proximo<br>ZhenPhone</h4>
+        <p>Tecnologia que te acompaña toda la vida</p>
+      </div>
+      <div >
+        <img class="cta-img" src="/images/Img-Header-2.png" alt="">
+      </div>
 
-
-
-
-
-
-
-
-   </main>
+    </section>
 
     <footer>
       <div class="footer margin">
@@ -135,8 +112,6 @@
     </footer>
 
     <script src="../navBar.js"></script>
-    
-    <script type="module" src="../Js/carrito.js"></script>
-    <script type="module" src="../Js/refreshCart.js"></script>
+    <script type="module" src="../Js/productos.js"></script>
   </body>
 </html>

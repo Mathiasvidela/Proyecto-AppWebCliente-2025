@@ -1,14 +1,7 @@
-//Formulario
+
 import { AIRTABLETOKEN, BASEID,TABLENAME} from "./envs.js";
 
-
-
-
-
-
 //----------------------------------------------------------------------- productos home -------------------------------------------
-
-
 
 let listProducts = []; //array vacio para llenar con los productos de Airtable
 
@@ -79,6 +72,10 @@ const storageButtons = document.querySelectorAll(".storage-filter");
 const ramButtons = document.querySelectorAll(".ram-filter");
 const priceFilter = document.querySelectorAll(".price-filter");
 const clearBtn = document.querySelector("#clearFilters");
+
+const categoryPhone = document.querySelectorAll(".category-phone");
+const categoryWatch = document.querySelectorAll(".category-watch");
+const categoryHeadphone = document.querySelectorAll(".category-headphone");
 
 
 
@@ -383,13 +380,25 @@ clearBtn.addEventListener("click", clearFilters);
 
 
 
+// botones que direccionan a detalle de cada uno
 
+categoryPhone.forEach(button => {
+    button.addEventListener('click', () => {
+        window.location.href = `../pages/productos.html?category=Celulares`;
+    });
+});
 
+categoryWatch.forEach(button => {
+    button.addEventListener('click', () => {
+        window.location.href = `../pages/productos.html?category=Smart Watch`;
+    });
+});
 
-
-
-
-
+categoryHeadphone.forEach(button => {
+    button.addEventListener('click', () => {
+        window.location.href = `../pages/productos.html?category=Headphones`;
+    });
+});
 
 
 
