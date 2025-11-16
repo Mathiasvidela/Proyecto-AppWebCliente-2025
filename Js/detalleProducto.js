@@ -130,7 +130,16 @@ function renderProductDetails(campo) {
 
     btnMas.addEventListener('click', () => {
         let valor = numValue.value;
-        numValue.value = parseInt(valor) + 1;
+
+        if(valor < currentProduct.stock){
+
+            numValue.value = parseInt(valor) + 1;
+
+        }else{
+
+            toastMessage(`${currentProduct.name} No hay mas stock disponible`, false);
+            
+        }
     });
 
 
