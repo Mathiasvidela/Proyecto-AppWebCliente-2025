@@ -36,7 +36,7 @@ function getCartItems() {
   const productsHTML = cartItems.map(item => 
     `<div class="cart-product">
       <div class="cart-img">
-        <img src="${item.img}" alt="${item.name}">
+        <img src=".${item.img}" alt="${item.name}">
       </div>
 
       <div class="cart-description">

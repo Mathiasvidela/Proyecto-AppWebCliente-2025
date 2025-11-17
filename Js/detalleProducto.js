@@ -181,6 +181,30 @@ function renderProductDetails(campo) {
     });
 
 
+    // boton comprar ahora
+
+    btnComprar.addEventListener('click', () => {
+
+        //verifica si hay stock
+       if (currentProduct.stock <= 0) {
+        toastMessage(`${currentProduct.name} sin stock`, false);
+        return;
+       }
+
+        const cantidad = parseInt(numValue.value);
+
+        //se vacia el carrito y luego se carga el producto
+        localStorage.removeItem('cart');
+        const cart = [{ ...currentProduct, quantity: cantidad }];
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        updateCartCount();
+        
+        
+        window.location.href = '../pages/cart.html';
+
+    });
+
     // toast funcion
 
     function toastMessage(message, isSuccess) {
