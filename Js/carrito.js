@@ -2,6 +2,8 @@ import { updateCartCount } from "../Js/refreshCart.js";
 
 const cartContainer = document.querySelector('#cartItems');
 const cartProducts = document.querySelector('#cartProducts');
+const btnDescuento = document.querySelector('.btn-mas');
+const descuentoCupon = document.querySelector('.descuentoCupon');
 
 const cantItems = document.querySelector('#cantItems');
 const subTotal = document.querySelector('#subTotal');
@@ -10,8 +12,18 @@ const envio = document.querySelector('#envio');
 
 const emptyCartBtn = document.querySelector('#vaciarBtn');
 
+// mostrar input cupon
+btnDescuento.addEventListener('click', () => {
 
+  if(descuentoCupon.style.display === 'block') {
+    descuentoCupon.style.display = 'none';
+    btnDescuento.innerText = "+";
+  } else {
+    descuentoCupon.style.display = 'block';
+    btnDescuento.innerText = "-";
+  }
 
+});
 
 
 //------------------- Mostrar los productos en el carrito
