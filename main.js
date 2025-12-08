@@ -11,7 +11,6 @@ const tableName = TABLENAME;
 const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
 
 
-
 async function fetchProductsFromAirtable() {
 
     try {
@@ -23,8 +22,6 @@ async function fetchProductsFromAirtable() {
             }
 
         });
-       
-
 
 
         const data = await response.json();
@@ -59,10 +56,6 @@ async function fetchProductsFromAirtable() {
 //inicilizacion de la pagina con productos de Airtable
 fetchProductsFromAirtable();
 
-
-
-
-
 //Dom Elements
 let productsContainer = document.querySelector("#productsContainer"); //este es el div donde van todos los productos
 const searchBar = document.querySelector("#searchBar");
@@ -76,12 +69,6 @@ const clearBtn = document.querySelector("#clearFilters");
 const categoryPhone = document.querySelectorAll(".category-phone");
 const categoryWatch = document.querySelectorAll(".category-watch");
 const categoryHeadphone = document.querySelectorAll(".category-headphone");
-
-
-
-
-
-
 
 
 //funcion que crea los elementos del producto
@@ -155,14 +142,6 @@ function renderProducts(products) {
         productsContainer.appendChild(productCard);
     });
 }
-
-
-/*function filterProducts(text) {
-    let filtered = listProducts.filter(product => product.name.toLowerCase().includes(text.toLowerCase()));
-    return filtered;
-}*/
-
-
 
 //----------------------------------------funciones de busqueda por filtros
 
@@ -347,18 +326,10 @@ storageButtons.forEach(button => {
 });
 
 
-
-
-
-
-
-
-
-
-
 // PRICE FILTER
 
 priceFilter.forEach(button => {
+
     button.addEventListener("click", () => {
 
         const active = button.classList.contains("filter-active");
@@ -369,15 +340,12 @@ priceFilter.forEach(button => {
         
         applyFilters();
 
-
     });
-
 
 });
 
 // Clear filters
 clearBtn.addEventListener("click", clearFilters);
-
 
 
 // botones que direccionan a detalle de cada uno

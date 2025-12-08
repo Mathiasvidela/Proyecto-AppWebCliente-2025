@@ -1,4 +1,5 @@
 import { AIRTABLETOKEN, BASEID,TABLENAME} from "../envs.js";
+import { updateCartCount } from "./refreshCart.js";
 
 const airTableToken = AIRTABLETOKEN;
 const baseId = BASEID;
@@ -40,7 +41,8 @@ async function fetchProductsFromAirtable() {
             price: product.fields.price,
             img: product.fields.img,
             id: product.id,
-            category: product.fields.category
+            category: product.fields.category,
+            stock: product.fields.stock,
             
         }));
         
@@ -48,6 +50,8 @@ async function fetchProductsFromAirtable() {
         const filtered = mapProducts.filter(product => product.category === categoryUrl);
 
         renderProducts(filtered);
+
+        
 
 
     }
@@ -76,24 +80,46 @@ function createProductCard(product){
 
                   <h2>${product.name}</h2>
                  
-                  <h3 class="precio-final">${product.price}</h3>
-
-                  <div class="contador">
-                    <label for="cantidad">Cantidad</label>
-                    <button class="contadores">-</button>
-                    <input class="cantidad" type="number" name="cantidad" value="1" min="1" step="1">
-                    <button class="contadores">+</button>
-                  </div>
+                  <h3 class="precio-final">$${product.price}</h3>
                   
                   <div class="buttons">
-                    <a class="btn-fill">Comprar ahora</a>
-                    <a href="/pages/detalleProducto.html" class="btn-stroke">Detalles <i class="fa-solid fa-list"></i></a>
+                    <a class="btn-fill btnComprar">Comprar ahora</a>
+                   
+                    <a href="/pages/detalleProducto.html?code=${encodeURIComponent(product.id)}" class="btn-stroke">Detalles <i class="fa-solid fa-list"></i></a>
                   </div>
 
                 </div>
             </div>
         </section>
     `
+
+    // boton comprar ahora
+    const btnComprar = section.querySelector('.btnComprar');
+    const numValue = section.querySelector('.cantidad');
+
+    btnComprar.addEventListener('click', () => {
+
+        //verifica si hay stock
+       if (product.stock <= 0) {
+        console.log('sin stock');
+        //toastMessage(`${product.name} sin stock`, false);
+        return;
+       }
+
+        //const cantidad = parseInt(numValue.value);
+
+        //se vacia el carrito y luego se carga el producto
+        localStorage.removeItem('cart');
+        const cart = [{ ...product, quantity: 1 }];
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        updateCartCount();
+        
+        
+        window.location.href = '../pages/cart.html';
+
+    });
+
 
     return section;
 }
@@ -105,6 +131,9 @@ function renderProducts(products) {
         productsContainer.appendChild(productCard);
     });
 }
+
+
+
 
 //inicilizacion de la pagina con productos de Airtable filtrados
 fetchProductsFromAirtable();
