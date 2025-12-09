@@ -863,7 +863,7 @@ margin: 1rem 0;
     background: var(--white);
     border: 1px solid rgba(238, 238, 238, 0.08);
     border-radius: 14px;
-    overflow: hidden;
+    overflow-x: auto; 
 }
 
 .actions {
@@ -872,7 +872,7 @@ margin: 1rem 0;
 }
 
 table {
-    width: 100%;
+    width: 1000px;
     border-collapse: collapse;
     font-size: 14px;
 }
