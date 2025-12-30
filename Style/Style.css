@@ -311,14 +311,35 @@ p {
 .card{
     display: flex;
     width: 100%;
-    background-color: #FEFDFE;
+    background-color: #ffffff; /* Pure white to match typical image backgrounds */
     color: var(--black);
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    border-radius: 1rem;
-    padding: 1rem 0;
+    border-radius: 1.5rem;
+    padding: 2rem 0;
     overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 
+                0 6px 10px -6px rgba(0, 0, 0, 0.01);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    letter-spacing: 0.05em;
+    color: var(--black);
+    text-transform: uppercase;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1), 
+                0 10px 15px -5px rgba(0, 0, 0, 0.04);
+    border-color: rgba(0,0,0,0.06);
 }
 
 .card button{
@@ -335,8 +356,8 @@ p {
     transition: all .9s ease-in-out;
 }
 
-.card-img:hover{
-    transform: scale(1.08)
+.card:hover .card-img{
+    transform: scale(1.08); /* Distinct but smooth zoom */
 }
 
 
