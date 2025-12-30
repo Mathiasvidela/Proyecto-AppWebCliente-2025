@@ -435,7 +435,16 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.products-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
 }
 
 .products-card-img{
@@ -443,7 +452,12 @@ p {
     object-fit: contain;
     width: 15rem;
     border-radius: 1rem;
-    padding: .2rem;
+    padding: .5rem;
+    transition: transform 0.5s ease;
+}
+
+.products-card:hover .products-card-img {
+    transform: scale(1.08);
 }
 
 .products-card-title{
@@ -466,8 +480,11 @@ p {
 }
 
 .products-card-precio{
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
 }
 
 
